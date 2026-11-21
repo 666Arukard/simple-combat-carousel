@@ -88,11 +88,12 @@ function render() {
   closeContextMenu();
   root?.remove(); root = null;
   const combat = game.combat;
-  if (!game.settings.get(ID, "enabled") || !combat?.turns?.length) return;
+  if (!game.settings.get(ID, "enabled") || !combat?.turns?.length
+    || (game.settings.get(ID, "onlyStarted") && !combat.started)) return;
   root = el("section", "rsc-carousel"); root.id = ID;
   root.setAttribute("aria-label", t("Order"));
   root.style.setProperty("--rsc-size", `${game.settings.get(ID, "portraitSize")}px`);
-  const rows = carouselRows(combat, game.user, t, game.settings.get(ID, "playersOnly"));
+  const rows = carouselRows(combat, game.user, t, game.settings.get(ID, "playersOnly"), game.settings.get(ID, "imageSource"));
   const showHealth = game.user.isGM && game.settings.get(ID, "showHealthBars");
   const collapsed = game.settings.get(ID, "collapsed");
   const toggle = button(root, t(collapsed ? "Expand" : "Collapse"), collapsed ? "▾" : "▴",
@@ -184,6 +185,8 @@ function schedule() {
   requestAnimationFrame(() => { scheduled = false; render(); });
 }
 Hooks.once("init", () => {
+  game.settings.register(ID, "imageSource", { name: t("ImageSourceName"), hint: t("ImageSourceHint"), scope: "world", config: true, restricted: true, type: String, default: "avatar", choices: { avatar: t("AvatarImage"), token: t("TokenImage") }, onChange: schedule });
+  game.settings.register(ID, "onlyStarted", { name: t("OnlyStartedName"), hint: t("OnlyStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: true, onChange: schedule });
   game.settings.register(ID, "playersOnly", { name: t("PlayersOnlyName"), hint: t("PlayersOnlyHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "language", { name: t("LanguageName"), hint: t("LanguageHint"), scope: "client", config: true, type: String, default: "auto", choices: { auto: t("Automatic"), de: "Deutsch", en: "English" }, requiresReload: true, onChange: schedule });
   game.settings.register(ID, "collapsed", { name: t("CollapsedName"), hint: t("CollapsedHint"), scope: "client", config: true, type: Boolean, default: false, onChange: schedule });

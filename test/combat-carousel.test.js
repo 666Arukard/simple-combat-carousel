@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { portraitData, canEndTurn, conditionEffects, healthState, carouselRows } from "../model.js";
+import { portraitData, canEndTurn, conditionEffects, healthState, carouselRows, portraitImage } from "../model.js";
 
 function fixture() {
   const player = { id: "player", isGM: false }, gm = { isGM: true };
@@ -11,6 +11,17 @@ function fixture() {
   const combat = { started: true, turns: [a, b, hidden], combatant: b, nextCombatant: hidden };
   return { player, gm, a, b, hidden, combat };
 }
+
+test("Avatar ist Standard, Token wählbar; fehlende Bilder haben sichere Fallbacks", () => {
+  const c = { actor: { img: "avatar.webp" }, img: "combat.webp", token: { texture: { src: "scene-token.webp" } } };
+  assert.equal(portraitImage(c), "avatar.webp");
+  assert.equal(portraitImage(c, "token"), "scene-token.webp");
+  delete c.token;
+  assert.equal(portraitImage(c, "token"), "combat.webp");
+  delete c.img;
+  assert.equal(portraitImage(c, "token"), "avatar.webp");
+  assert.equal(portraitImage({}), "icons/svg/mystery-man.svg");
+});
 test("Spieler erhalten weder RK noch HP, auch bei eigenen Akteuren; versteckte Gegner fehlen", () => {
   const { combat, player } = fixture();
   const rows = portraitData(combat, player);

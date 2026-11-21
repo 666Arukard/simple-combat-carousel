@@ -2,6 +2,12 @@
 export const catalogs = {
   "de": {
     "SCC.Order": "Kampfreihenfolge",
+    "SCC.ImageSourceName": "Porträt-Bildquelle",
+    "SCC.ImageSourceHint": "Wählt für alle Teilnehmer Avatar-Bilder oder die Bilder der Szenentokens. Bei fehlendem Bild wird die andere Quelle verwendet. Gilt auch für die Miniansicht.",
+    "SCC.AvatarImage": "Avatar-Bild (Standard)",
+    "SCC.TokenImage": "Token-Bild",
+    "SCC.OnlyStartedName": "Erst nach Kampfstart anzeigen",
+    "SCC.OnlyStartedHint": "Das Carousel erscheint erst, nachdem die Spielleitung den Kampf gestartet hat. Vorher erfolgt die Vorbereitung im normalen Combat-Reiter.",
     "SCC.Hide": "Im Kampf verstecken",
     "SCC.Show": "Im Kampf einblenden",
     "SCC.Defeat": "Als besiegt markieren",
@@ -43,6 +49,12 @@ export const catalogs = {
   },
   "en": {
     "SCC.Order": "Combat order",
+    "SCC.ImageSourceName": "Portrait image source",
+    "SCC.ImageSourceHint": "Choose actor portraits or scene token images for all participants. Falls back to the other source if an image is missing. Also applies to the mini view.",
+    "SCC.AvatarImage": "Actor portrait (default)",
+    "SCC.TokenImage": "Token image",
+    "SCC.OnlyStartedName": "Show only after combat starts",
+    "SCC.OnlyStartedHint": "The carousel appears after the GM starts combat. Prepare combatants in the regular Combat Tracker beforehand.",
     "SCC.Hide": "Hide in combat",
     "SCC.Show": "Show in combat",
     "SCC.Defeat": "Mark defeated",

@@ -15,7 +15,13 @@ export function conditionEffects(actor) {
     && (e.isTemporary || (e.statuses?.size ?? e.statuses?.length ?? 0) > 0));
 }
 
-export function portraitData(combat, user, translate = key => ({ Unknown: "Unbekannt", Condition: "Zustand" })[key]) {
+export function portraitImage(combatant, source = "avatar") {
+  const avatar = combatant.actor?.img;
+  const token = combatant.token?.texture?.src || combatant.img;
+  return (source === "token" ? token || avatar : avatar || token) || "icons/svg/mystery-man.svg";
+}
+
+export function portraitData(combat, user, translate = key => ({ Unknown: "Unbekannt", Condition: "Zustand" })[key], imageSource = "avatar") {
   const turns = combat.turns ?? [];
   const visible = turns.filter(c => user.isGM || (!c.hidden && c.visible !== false));
   const current = visible.findIndex(c => c.id === combat.combatant?.id);
@@ -23,7 +29,7 @@ export function portraitData(combat, user, translate = key => ({ Unknown: "Unbek
   return ordered.map((c, index) => {
     const actor = c.actor;
     const data = {
-      id: c.id, name: c.name ?? translate("Unknown"), img: c.img || actor?.img || "icons/svg/mystery-man.svg",
+      id: c.id, name: c.name ?? translate("Unknown"), img: portraitImage(c, imageSource),
       initiative: c.initiative ?? "–", active: combat.started && c.id === combat.combatant?.id,
       next: combat.started && c.id === combat.nextCombatant?.id,
       roundBreak: index > 0 && turns.indexOf(c) < turns.indexOf(ordered[index - 1]),
@@ -42,8 +48,8 @@ export function portraitData(combat, user, translate = key => ({ Unknown: "Unbek
   });
 }
 
-export function carouselRows(combat, user, translate, playersOnly = false) {
-  const rows = portraitData(combat, user, translate);
+export function carouselRows(combat, user, translate, playersOnly = false, imageSource = "avatar") {
+  const rows = portraitData(combat, user, translate, imageSource);
   if (user.isGM || !playersOnly) return rows;
   const isPC = c => c.actor?.type === "character" || (c.actor?.type !== "npc" && c.isNPC === false && c.actor?.hasPlayerOwner);
   const ids = new Set((combat.turns ?? []).filter(isPC).map(c => c.id));

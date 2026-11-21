@@ -1,3 +1,13 @@
+# Simple Combat Carousel 1.2.0
+
+Unreleased / Noch nicht veröffentlicht.
+
+- GM-configured world setting for actor portraits (default) or scene token images in full and mini views, with fallback for missing images.
+- Carousel is shown only after combat starts by default. The GM can disable this setting to show combat preparation again.
+- Weltweite SL-Einstellung für Avatar-Bilder (Standard) oder Szenentoken-Bilder in Groß- und Miniansicht, mit Ersatzquelle bei fehlendem Bild.
+- Das Carousel erscheint standardmäßig erst nach Kampfstart; die Spielleitung kann diese Einstellung abschalten.
+- Per-combatant image overrides, special highlights and legendary-action interludes remain future work.
+
 # Simple Combat Carousel 1.1.1
 
 Released / Veröffentlicht: 2026-11-21.

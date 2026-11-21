@@ -1,5 +1,11 @@
 {
   "SCC.Order": "Kampfreihenfolge",
+  "SCC.ImageSourceName": "Porträt-Bildquelle",
+  "SCC.ImageSourceHint": "Wählt für alle Teilnehmer Avatar-Bilder oder die Bilder der Szenentokens. Bei fehlendem Bild wird die andere Quelle verwendet. Gilt auch für die Miniansicht.",
+  "SCC.AvatarImage": "Avatar-Bild (Standard)",
+  "SCC.TokenImage": "Token-Bild",
+  "SCC.OnlyStartedName": "Erst nach Kampfstart anzeigen",
+  "SCC.OnlyStartedHint": "Das Carousel erscheint erst, nachdem die Spielleitung den Kampf gestartet hat. Vorher erfolgt die Vorbereitung im normalen Combat-Reiter.",
   "SCC.Hide": "Im Kampf verstecken",
   "SCC.Show": "Im Kampf einblenden",
   "SCC.Defeat": "Als besiegt markieren",

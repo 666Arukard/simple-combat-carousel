@@ -1,5 +1,11 @@
 {
   "SCC.Order": "Combat order",
+  "SCC.ImageSourceName": "Portrait image source",
+  "SCC.ImageSourceHint": "Choose actor portraits or scene token images for all participants. Falls back to the other source if an image is missing. Also applies to the mini view.",
+  "SCC.AvatarImage": "Actor portrait (default)",
+  "SCC.TokenImage": "Token image",
+  "SCC.OnlyStartedName": "Show only after combat starts",
+  "SCC.OnlyStartedHint": "The carousel appears after the GM starts combat. Prepare combatants in the regular Combat Tracker beforehand.",
   "SCC.Hide": "Hide in combat",
   "SCC.Show": "Show in combat",
   "SCC.Defeat": "Mark defeated",
