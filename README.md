@@ -4,7 +4,7 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
-Prepared for 1.1.0 (not released): optional **Player view: player characters only** world setting, configured by the GM. NPC turns appear as one anonymous placeholder; upcoming visible PCs retain their turn order. The GM view and the default full view remain complete. Health bars change to orange at ≤50% and red at ≤25%; portraits receive a translucent red overlay at ≤10%, also in mini view. These health indicators are GM-only and follow the health-bar setting. Conditions and temporary effects are displayed, passive effects are excluded. Initiative buttons use Foundry's bundled D20 icon.
+New in 1.1.0: optional **Player view: player characters only** world setting, configured by the GM. NPC turns appear as one anonymous placeholder; upcoming visible PCs retain their turn order. The GM view and the default full view remain complete. Health bars change to orange at ≤50% and red at ≤25%; portraits receive a translucent red overlay at ≤10%, also in mini view. These health indicators are GM-only and follow the health-bar setting. Conditions and temporary effects are displayed, passive effects are excluded. Initiative buttons use Foundry's bundled D20 icon.
 
 A compact combat carousel at the top center of Foundry VTT. Portraits show initiative and active conditions; the current turn is highlighted in gold and the next combatant in blue. Collapse the carousel into a small centered bar showing the current and next combatant with pictures and names. The end-turn button works in both views.
 
@@ -28,7 +28,7 @@ Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player t
 
 ## Deutsch
 
-Für 1.1.0 vorbereitet, noch unveröffentlicht: Die Spielleitung kann **Spieleransicht: nur Spielercharaktere** weltweit einschalten. Beim NSC-Zug erscheint ein anonymer Platzhalter; danach folgen die sichtbaren SC in ihrer Reihenfolge. SL-Ansicht und Standardansicht bleiben vollständig. Lebensbalken werden bei ≤50% orange und bei ≤25% rot; bei ≤10% erhält das Porträt eine transparente rote Überblendung, auch in der Miniansicht. Diese HP-Hinweise gelten nur für den SL und folgen der Lebensbalken-Einstellung. Nur Zustände und temporäre Effekte erscheinen als Icons, keine passiven Effekte. Initiativeknöpfe verwenden Foundrys eingebundenes D20-Icon.
+Neu in 1.1.0: Die Spielleitung kann **Spieleransicht: nur Spielercharaktere** weltweit einschalten. Beim NSC-Zug erscheint ein anonymer Platzhalter; danach folgen die sichtbaren SC in ihrer Reihenfolge. SL-Ansicht und Standardansicht bleiben vollständig. Lebensbalken werden bei ≤50% orange und bei ≤25% rot; bei ≤10% erhält das Porträt eine transparente rote Überblendung, auch in der Miniansicht. Diese HP-Hinweise gelten nur für den SL und folgen der Lebensbalken-Einstellung. Nur Zustände und temporäre Effekte erscheinen als Icons, keine passiven Effekte. Initiativeknöpfe verwenden Foundrys eingebundenes D20-Icon.
 
 Kompaktes Combat Carousel oben mittig in Foundry VTT. Porträts zeigen Initiative und aktive Zustände. Der aktuelle Charakter ist goldfarben, der nächste blau hervorgehoben. Die einklappbare Miniansicht zeigt den aktuellen und nächsten Charakter mit Bild und Name. „Zug beenden“ funktioniert in beiden Ansichten.
 
@@ -45,3 +45,4 @@ Die oben genannte Manifest-Adresse unter **Modul installieren → Manifest-URL**
 Die Angabe **verified: 14.370** beruht auf Daniels bestätigtem Praxistest von 0.1.4 mit Spielleiter- und Spieleransicht. Die Übersetzungen und Release-Dateien von 1.0.0 wurden zusätzlich automatisiert geprüft. Keine Versionsobergrenze; spätere Foundry-Versionen werden nicht pauschal gesperrt, sind aber noch nicht praktisch abgenommen. HP/RK verwenden D&D-5e-Wertepfade.
 
 Eigenständige Implementierung mit KI-Unterstützung durch ChatGPT/Codex. Carousel Combat Tracker diente als Funktionsreferenz, ohne Codeübernahme oder Laufzeitabhängigkeit. Eine spätere optionale Integration in die RPG Suite ist geplant. Weitere Ideen stehen in [ROADMAP.md](ROADMAP.md), noch ohne Implementierung.
+

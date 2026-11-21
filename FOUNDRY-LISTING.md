@@ -6,7 +6,7 @@ Simple Combat Carousel brings a compact, centered combat overview to Foundry VTT
 
 Players can advance only their own active turn. The GM has initiative and combat controls beside the carousel, with optional health bars enabled by default and armor class shown on hover. Health bars and armor class are visible exclusively to the GM; these values currently support D&D 5e. Hidden combatants remain hidden from players.
 
-Choose German or English in the module settings, or follow Foundry's language automatically. The carousel has no required module dependencies. Future display filters and the optional RPG Suite integration are planned features and are not included in 1.1.0.
+Choose German or English in the module settings, or follow Foundry's language automatically. An optional GM-controlled PC-only player view replaces NPC turns with an anonymous placeholder and shows the next visible PC. GM health bars turn orange at 50% and red at 25%; at 10% or less a translucent red portrait overlay appears. The carousel has no required module dependencies. Optional RPG Suite integration remains planned.
 
 ## Deutsche Beschreibung
 
@@ -14,7 +14,7 @@ Simple Combat Carousel ergänzt Foundry VTT um eine kompakte Kampfübersicht obe
 
 Spieler können ausschließlich ihren eigenen aktiven Zug weiterschalten. Die Spielleitung erhält Initiative- und Kampfsteuerung neben dem Carousel sowie optionale, standardmäßig eingeschaltete Lebensbalken und die RK beim Hover. Lebensbalken und RK sind ausschließlich für die Spielleitung sichtbar; diese Werte unterstützen derzeit D&D 5e. Versteckte Kampfteilnehmer bleiben für Spieler verborgen.
 
-In den Moduleinstellungen lässt sich zwischen Deutsch, Englisch und automatischer Übernahme der Foundry-Sprache wählen. Das Modul benötigt keine weiteren Module. Zusätzliche Anzeigefilter und die optionale Integration in die RPG Suite sind vorgemerkt und noch nicht Bestandteil von 1.1.0.
+In den Moduleinstellungen lässt sich zwischen Deutsch, Englisch und automatischer Übernahme der Foundry-Sprache wählen. Die optionale SC-Ansicht ersetzt NSC-Züge für Spieler durch einen anonymen Platzhalter und zeigt den nächsten sichtbaren SC. SL-Lebensbalken werden bis 50% orange und bis 25% rot; bei höchstens 10% erscheint eine transparente rote Porträtüberblendung. Das Modul benötigt keine weiteren Module. Die optionale Integration in die RPG Suite bleibt vorgemerkt.
 
 ## Package fields / Paketangaben
 

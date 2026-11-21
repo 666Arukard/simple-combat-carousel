@@ -1,6 +1,6 @@
 # Simple Combat Carousel 1.1.0
 
-Unreleased / Noch nicht veröffentlicht.
+Released / Veröffentlicht: 2026-11-21.
 
 - Optional GM-configured PC-only player view with anonymous NPC-turn placeholder and next visible PC. Full order remains the default.
 - Health bars: orange at 50% and below, red at 25% and below; translucent red portrait overlay at 10% and below. GM-only, follows the health-bar visibility setting, including the mini-view overlay.
@@ -14,13 +14,13 @@ Unreleased / Noch nicht veröffentlicht.
 
 ## English
 
-- Prepared Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/. This correction is not yet released.
-- Installation and update downloads continue to use GitHub. No combat behavior changes.
+- Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/.
+- Installation and update downloads continue to use GitHub.
 
 ## Deutsch
 
-- Vorbereitete Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/. Diese Korrektur ist noch nicht veröffentlicht.
-- Installation und Updates werden weiterhin über GitHub bereitgestellt. Keine Änderungen am Kampfablauf.
+- Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/.
+- Installation und Updates werden weiterhin über GitHub bereitgestellt.
 
 # Simple Combat Carousel 1.0.0
 
