@@ -4,6 +4,7 @@ import io
 import json
 import pathlib
 import unittest
+from unittest.mock import patch
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -13,6 +14,23 @@ spec.loader.exec_module(publisher)
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_only_major_and_minor_releases_are_registered(self):
+        for version in ["1.0.0", "1.1.0", "2.0.0", "2.3.0"]:
+            with self.subTest(version=version):
+                self.assertTrue(publisher.should_register(version))
+        for version in ["1.0.1", "1.0.2", "1.1.3", "2.0.1", "1.1.0-beta.1", "2.0.0-rc.1"]:
+            with self.subTest(version=version):
+                self.assertFalse(publisher.should_register(version))
+
+    def test_patch_release_needs_no_secret_or_network(self):
+        with patch.object(pathlib.Path, "read_text", return_value=json.dumps({"version": "1.0.2"})), \
+             patch.dict(publisher.os.environ, {}, clear=True), \
+             patch.object(publisher, "fetch") as fetch, \
+             patch.object(publisher.urllib.request, "build_opener") as opener:
+            publisher.main()
+            fetch.assert_not_called()
+            opener.assert_not_called()
+
     def setUp(self):
         self.manifest = json.loads((ROOT / "module.json").read_text(encoding="utf-8"))
         self.release = {"tag_name": "v" + self.manifest["version"], "draft": False,

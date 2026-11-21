@@ -18,6 +18,14 @@ BASE = "https://github.com/" + REPO
 API = "https://foundryvtt.com/_api/packages/release_version/"
 
 
+def should_register(version):
+    """Only stable X.Y.0 releases are announced in Foundry's directory."""
+    match = re.fullmatch(r"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?", version)
+    if not match:
+        raise ValueError("Invalid release version.")
+    return int(match[3]) == 0 and match[4] is None
+
+
 def validate_release(release, manifest, archive):
     version = manifest.get("version", "")
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):
@@ -74,15 +82,16 @@ def already_registered(error):
 
 
 def main():
+    local = json.loads(pathlib.Path("module.json").read_text(encoding="utf-8"))
+    version = local["version"]
+    if not should_register(version):
+        print(f"Skipping Foundry registration for {version}: only stable X.Y.0 releases are announced.")
+        return
     token = os.environ.get("FOUNDRY_RELEASE_TOKEN", "").strip()
     if not token.startswith("fvttp_") or any(c.isspace() for c in token):
         raise ValueError("Repository secret FOUNDRY_RELEASE_TOKEN is missing or invalid.")
     if os.environ.get("GITHUB_REPOSITORY") != REPO:
         raise ValueError("Unexpected repository.")
-    local = json.loads(pathlib.Path("module.json").read_text(encoding="utf-8"))
-    version = local["version"]
-    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
-        raise ValueError("Invalid release version.")
     release = json.loads(fetch(f"https://api.github.com/repos/{REPO}/releases/tags/v{version}", 2_000_000))
     manifest = json.loads(fetch(f"{BASE}/releases/download/v{version}/module.json", 2_000_000))
     archive = fetch(f"{BASE}/releases/download/v{version}/simple-combat-carousel-{version}.zip", 20_000_000)
