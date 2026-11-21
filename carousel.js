@@ -1,8 +1,10 @@
 import { canEndTurn, carouselRows, healthState } from "./model.js";
 import { t } from "./i18n.js";
+import { contextActions, runContextAction } from "./context-actions.js";
 
 const ID = "rpg-suite-combat-carousel";
 let root, busy = false, scheduled = false;
+let contextMenu, contextListeners;
 const el = (tag, cls, text) => {
   const node = document.createElement(tag);
   if (cls) node.className = cls;
@@ -30,7 +32,60 @@ function button(parent, label, icon, action, disabled = false) {
   return b;
 }
 
+function closeContextMenu() {
+  contextListeners?.abort(); contextListeners = null;
+  contextMenu?.remove(); contextMenu = null;
+}
+
+function bindContextMenu(element, combat, portrait) {
+  if (portrait.placeholder) return;
+  element.tabIndex = 0;
+  element.addEventListener("contextmenu", event => {
+    event.preventDefault(); event.stopPropagation(); closeContextMenu();
+    if (busy || game.combat?.id !== combat.id) return;
+    const combatant = combat.combatants.get(portrait.id);
+    const canvas = globalThis.canvas;
+    const actions = contextActions(combatant, game.user, canvas);
+    if (!actions.length) return;
+    const menu = el("nav", "rsc-context-menu"); contextMenu = menu;
+    menu.setAttribute("role", "menu"); menu.setAttribute("aria-label", portrait.name);
+    const options = {
+      hidden: [combatant.hidden ? "Show" : "Hide", "fa-solid fa-eye-slash"],
+      defeated: [combatant.isDefeated ? "Undefeat" : "Defeat", "fa-solid fa-skull"],
+      ping: ["Ping", "fa-solid fa-bullseye"]
+    };
+    for (const action of actions) {
+      const [label, icon] = options[action];
+      const item = button(menu, t(label), icon, async () => {
+        closeContextMenu();
+        await runContextAction(action, combat.id, portrait.id, { game, canvas: globalThis.canvas, tracker: ui.combat });
+      });
+      item.append(el("span", "rsc-menu-label", t(label)));
+      item.setAttribute("role", "menuitem");
+    }
+    document.body.append(menu);
+    const bounds = menu.getBoundingClientRect();
+    menu.style.left = `${Math.max(4, Math.min(event.clientX, globalThis.innerWidth - bounds.width - 4))}px`;
+    menu.style.top = `${Math.max(4, Math.min(event.clientY, globalThis.innerHeight - bounds.height - 4))}px`;
+    contextListeners = new AbortController();
+    const optionsListener = { capture: true, signal: contextListeners.signal };
+    document.addEventListener("pointerdown", e => { if (!menu.contains(e.target)) closeContextMenu(); }, optionsListener);
+    document.addEventListener("scroll", closeContextMenu, optionsListener);
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") { closeContextMenu(); element.focus(); }
+      if (["ArrowDown", "ArrowUp"].includes(e.key)) {
+        e.preventDefault();
+        const items = [...menu.querySelectorAll("button")];
+        const index = items.indexOf(document.activeElement);
+        items[(index + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length].focus();
+      }
+    }, optionsListener);
+    menu.querySelectorAll("button")[0]?.focus();
+  });
+}
+
 function render() {
+  closeContextMenu();
   root?.remove(); root = null;
   const combat = game.combat;
   if (!game.settings.get(ID, "enabled") || !combat?.turns?.length) return;
@@ -54,6 +109,7 @@ function render() {
         const image = el("img", "rsc-compact-avatar");
         image.src = participant.img; image.alt = participant.name;
         frame.append(image);
+        bindContextMenu(frame, combat, participant);
         if (showHealth && healthState(participant.hpPercent) === "danger")
           frame.append(el("span", "rsc-danger-overlay"));
         slot.append(frame);
@@ -99,6 +155,7 @@ function render() {
   for (const p of rows) {
     if (p.roundBreak) portraits.append(el("span", "rsc-break", "↻"));
     const card = el("article", `rsc-card${p.active ? " is-active" : ""}${p.next ? " is-next" : ""}${p.defeated ? " is-defeated" : ""}`);
+    bindContextMenu(card, combat, p);
     card.setAttribute("aria-label", `${p.name}${p.active ? `, ${t("Active")}` : p.next ? `, ${t("Next")}` : ""}`);
     const image = el("img", "rsc-avatar"); image.src = p.img; image.alt = p.name; card.append(image);
     if (showHealth && healthState(p.hpPercent) === "danger") card.append(el("span", "rsc-danger-overlay"));

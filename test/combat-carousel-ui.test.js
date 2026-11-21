@@ -7,11 +7,14 @@ test("Steuerung liegt außerhalb der Avatare; SL-Balken sind abschaltbar", async
     append(...nodes) { this.children.push(...nodes); }
     setAttribute() {}
     addEventListener(event, callback) { this[event] = callback; }
+    getBoundingClientRect() { return { width: 200, height: 100 }; }
+    focus() { document.activeElement = this; }
     remove() { document.body.children = document.body.children.filter(c => c !== this); }
     querySelectorAll(tag) { return this.children.flatMap(c => [...(c.tag === tag ? [c] : []), ...c.querySelectorAll(tag)]); }
   }
   const hooks = new Map(), settings = new Map();
-  globalThis.document = { createElement: tag => new Element(tag), body: new Element("body") };
+  globalThis.document = { createElement: tag => new Element(tag), body: new Element("body"), addEventListener() {} };
+  globalThis.innerWidth = 1200; globalThis.innerHeight = 800;
   globalThis.Hooks = { once: (name, fn) => hooks.set(name, fn), on() {} };
   globalThis.requestAnimationFrame = callback => callback();
   const actor = { testUserPermission: () => true, system: { attributes: { hp: { value: 5, max: 10 } } } };
@@ -99,4 +102,25 @@ test("Steuerung liegt außerhalb der Avatare; SL-Balken sind abschaltbar", async
   assert.equal(find("rsc-compact-label")[0].textContent, "Combat · Round 3");
   await game.settings.set("rpg-suite-combat-carousel", "language", "de");
   assert.equal(find("rsc-compact-role")[0].textContent, "Am Zug");
+  game.user.isGM = true;
+  c.token = { parent: { id: "scene" }, object: { center: { x: 20, y: 30 }, isVisible: true } };
+  game.combat.combatants = new Map([[c.id, c]]);
+  globalThis.canvas = { ready: true, scene: { id: "scene" }, ping: async () => {} };
+  let hiddenToggles = 0;
+  globalThis.ui = { combat: { _onToggleHidden: async () => hiddenToggles++ } };
+  settings.get("collapsed").onChange();
+  const contextEvent = { preventDefault() {}, stopPropagation() {}, clientX: 1199, clientY: 799 };
+  find("rsc-compact-frame")[0].contextmenu(contextEvent);
+  let menu = document.body.children.find(c => c.className === "rsc-context-menu");
+  assert.equal(menu.querySelectorAll("button").length, 3);
+  assert.equal(menu.style.left, "996px");
+  await menu.querySelectorAll("button")[0].click({ stopPropagation() {} });
+  assert.equal(hiddenToggles, 1);
+  assert.equal(document.body.children.some(c => c.className === "rsc-context-menu"), false);
+  await game.settings.set("rpg-suite-combat-carousel", "collapsed", false);
+  game.user.isGM = false;
+  settings.get("collapsed").onChange();
+  find("rsc-card")[0].contextmenu(contextEvent);
+  menu = document.body.children.find(c => c.className === "rsc-context-menu");
+  assert.equal(menu.querySelectorAll("button").length, 1);
 });

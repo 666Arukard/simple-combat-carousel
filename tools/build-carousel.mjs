@@ -21,7 +21,7 @@ assert.equal(manifest.manifest, `${base}/releases/latest/download/module.json`);
 assert.equal(manifest.download, `${base}/releases/download/v${pkg.version}/simple-combat-carousel-${pkg.version}.zip`);
 const dist = path.join(root, "dist");
 fs.mkdirSync(path.join(dist, manifest.id, "lang"), { recursive: true });
-for (const file of ["module.json", "carousel.js", "carousel.css", "model.js", "i18n.js", "locales.js", "lang/de.json", "lang/en.json", "README.md", "CHANGELOG.md", "ROADMAP.md", "TESTING.md"])
+for (const file of ["module.json", "carousel.js", "carousel.css", "model.js", "context-actions.js", "i18n.js", "locales.js", "lang/de.json", "lang/en.json", "README.md", "CHANGELOG.md", "ROADMAP.md", "TESTING.md"])
   fs.copyFileSync(path.join(root, file), path.join(dist, manifest.id, file));
 fs.copyFileSync(path.join(root, "module.json"), path.join(dist, "module.json"));
 console.log(`Prepared Simple Combat Carousel ${pkg.version}`);

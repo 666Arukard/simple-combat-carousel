@@ -4,6 +4,8 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
+Prepared for 1.1.1: right-click a portrait (also in mini view) to open Hide/Show, Mark defeated/Remove defeated status (GM only), or Ping token. This uses Foundry's combat-tracker behavior without changing HP. Players can ping visible tokens in the current scene. Anonymous placeholders have no menu. Close with Escape or an outside click; keyboard arrows navigate the menu.
+
 New in 1.1.0: optional **Player view: player characters only** world setting, configured by the GM. NPC turns appear as one anonymous placeholder; upcoming visible PCs retain their turn order. The GM view and the default full view remain complete. Health bars change to orange at ≤50% and red at ≤25%; portraits receive a translucent red overlay at ≤10%, also in mini view. These health indicators are GM-only and follow the health-bar setting. Conditions and temporary effects are displayed, passive effects are excluded. Initiative buttons use Foundry's bundled D20 icon.
 
 A compact combat carousel at the top center of Foundry VTT. Portraits show initiative and active conditions; the current turn is highlighted in gold and the next combatant in blue. Collapse the carousel into a small centered bar showing the current and next combatant with pictures and names. The end-turn button works in both views.
@@ -27,6 +29,8 @@ For a manual installation, extract the `rpg-suite-combat-carousel` directory int
 Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player test of 0.1.4. Version 1.0.0 adds translations and release metadata, validated by automated tests. No maximum version is declared: newer Foundry versions are not blocked, but compatibility with future API changes cannot be guaranteed. The combat display uses Foundry's native Combat API; HP and AC support uses D&D 5e data paths. Other game systems can use the combat order, but their HP and AC values may require adapters.
 
 ## Deutsch
+
+Für 1.1.1 vorbereitet: Rechtsklick auf ein Porträt (auch minimiert) öffnet Verstecken/Einblenden, Als besiegt markieren/Markierung entfernen (nur SL) sowie Token anpingen. Dabei wird Foundrys Combat-Verhalten verwendet; HP bleiben unverändert. Spieler können sichtbare Tokens der aktuellen Szene anpingen. Anonyme Platzhalter erhalten kein Menü. Escape oder Klick außerhalb schließt das Menü, Pfeiltasten navigieren.
 
 Neu in 1.1.0: Die Spielleitung kann **Spieleransicht: nur Spielercharaktere** weltweit einschalten. Beim NSC-Zug erscheint ein anonymer Platzhalter; danach folgen die sichtbaren SC in ihrer Reihenfolge. SL-Ansicht und Standardansicht bleiben vollständig. Lebensbalken werden bei ≤50% orange und bei ≤25% rot; bei ≤10% erhält das Porträt eine transparente rote Überblendung, auch in der Miniansicht. Diese HP-Hinweise gelten nur für den SL und folgen der Lebensbalken-Einstellung. Nur Zustände und temporäre Effekte erscheinen als Icons, keine passiven Effekte. Initiativeknöpfe verwenden Foundrys eingebundenes D20-Icon.
 

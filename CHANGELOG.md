@@ -1,3 +1,13 @@
+# Simple Combat Carousel 1.1.1
+
+Unreleased / Noch nicht veröffentlicht.
+
+- Right-click portraits in full and mini views for Hide/Show, Mark defeated/Remove defeated status (GM only), and Ping token.
+- Uses Foundry V14's CombatTracker handlers for hidden/defeated state and Canvas ping for the token center. Does not change HP.
+- Players can ping only visible tokens on the currently viewed scene. Anonymous PC-only placeholders have no context menu.
+- Rechtsklick auf Porträts in Groß- und Miniansicht: Verstecken/Einblenden, Als besiegt markieren/Markierung entfernen (nur SL) sowie Token anpingen.
+- Verwendet Foundrys CombatTracker-Handler und Canvas-Ping. Keine HP-Änderung. Spieler können nur sichtbare Tokens der aktuellen Szene anpingen; anonyme Platzhalter besitzen kein Menü.
+
 # Simple Combat Carousel 1.1.0
 
 Released / Veröffentlicht: 2026-11-21.

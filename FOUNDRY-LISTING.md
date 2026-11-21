@@ -1,4 +1,4 @@
-# Foundry package listing – Simple Combat Carousel 1.1.0
+# Foundry package listing – Simple Combat Carousel 1.1.1
 
 ## English description
 
@@ -23,16 +23,16 @@ In den Moduleinstellungen lässt sich zwischen Deutsch, Englisch und automatisch
 | Package title | Simple Combat Carousel |
 | Package ID / technical name | rpg-suite-combat-carousel |
 | Type | Module |
-| Version | 1.1.0 |
+| Version | 1.1.1 |
 | Author | Daniel Brune |
 | Author website | https://dnd.brunecoaching.de |
 | Email | daniel@brunecoaching.de |
 | Discord | arukard |
 | Project / Package URL | https://foundryvtt.com/packages/rpg-suite-combat-carousel/ |
 | Stable manifest / installation URL | https://github.com/666Arukard/simple-combat-carousel/releases/latest/download/module.json |
-| Version-specific manifest URL | https://github.com/666Arukard/simple-combat-carousel/releases/download/v1.1.0/module.json |
-| Download URL | https://github.com/666Arukard/simple-combat-carousel/releases/download/v1.1.0/simple-combat-carousel-1.1.0.zip |
-| Release notes | https://github.com/666Arukard/simple-combat-carousel/releases/tag/v1.1.0 |
+| Version-specific manifest URL | https://github.com/666Arukard/simple-combat-carousel/releases/download/v1.1.1/module.json |
+| Download URL | https://github.com/666Arukard/simple-combat-carousel/releases/download/v1.1.1/simple-combat-carousel-1.1.1.zip |
+| Release notes | https://github.com/666Arukard/simple-combat-carousel/releases/tag/v1.1.1 |
 | Issues | https://github.com/666Arukard/simple-combat-carousel/issues |
 | Minimum Foundry version | 14 |
 | Verified Foundry version | 14.370 |
@@ -41,7 +41,7 @@ In den Moduleinstellungen lässt sich zwischen Deutsch, Englisch und automatisch
 | Dependencies | None / keine |
 | Suggested categories | Combat Enhancements; Tools and Controls |
 
-The technical ID is retained so prototype installations keep their settings. No upper-version restriction is declared; future Foundry versions remain untested. The verified entry is based on Daniel's successful 0.1.4 test; 1.1.0 translations and metadata are additionally tested automatically. The source is independently implemented with ChatGPT/Codex assistance; no AI service runs in the module. Do not select a “Contains Zero AI” label.
+The technical ID is retained so prototype installations keep their settings. No upper-version restriction is declared; future Foundry versions remain untested. The verified entry is based on Daniel's successful 0.1.4 test; 1.1.1 translations and metadata are additionally tested automatically. The source is independently implemented with ChatGPT/Codex assistance; no AI service runs in the module. Do not select a “Contains Zero AI” label.
 
 Publishing the GitHub release does not register a new package in the Foundry directory. The author must submit the package listing there separately.
 

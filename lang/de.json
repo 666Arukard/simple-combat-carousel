@@ -1,5 +1,10 @@
 {
   "SCC.Order": "Kampfreihenfolge",
+  "SCC.Hide": "Im Kampf verstecken",
+  "SCC.Show": "Im Kampf einblenden",
+  "SCC.Defeat": "Als besiegt markieren",
+  "SCC.Undefeat": "Besiegt-Markierung entfernen",
+  "SCC.Ping": "Token anpingen",
   "SCC.NPCTurn": "NSC am Zug",
   "SCC.PlayersOnlyName": "Spieleransicht: nur Spielercharaktere",
   "SCC.PlayersOnlyHint": "Spieler sehen nur SC. Während eines NSC-Zuges erscheint ein anonymer Platzhalter; danach wird der nächste sichtbare SC angezeigt. Die SL-Ansicht bleibt vollständig.",

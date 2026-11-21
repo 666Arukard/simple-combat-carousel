@@ -2,6 +2,11 @@
 export const catalogs = {
   "de": {
     "SCC.Order": "Kampfreihenfolge",
+    "SCC.Hide": "Im Kampf verstecken",
+    "SCC.Show": "Im Kampf einblenden",
+    "SCC.Defeat": "Als besiegt markieren",
+    "SCC.Undefeat": "Besiegt-Markierung entfernen",
+    "SCC.Ping": "Token anpingen",
     "SCC.NPCTurn": "NSC am Zug",
     "SCC.PlayersOnlyName": "Spieleransicht: nur Spielercharaktere",
     "SCC.PlayersOnlyHint": "Spieler sehen nur SC. Während eines NSC-Zuges erscheint ein anonymer Platzhalter; danach wird der nächste sichtbare SC angezeigt. Die SL-Ansicht bleibt vollständig.",
@@ -38,6 +43,11 @@ export const catalogs = {
   },
   "en": {
     "SCC.Order": "Combat order",
+    "SCC.Hide": "Hide in combat",
+    "SCC.Show": "Show in combat",
+    "SCC.Defeat": "Mark defeated",
+    "SCC.Undefeat": "Remove defeated status",
+    "SCC.Ping": "Ping token",
     "SCC.NPCTurn": "NPC turn",
     "SCC.PlayersOnlyName": "Player view: player characters only",
     "SCC.PlayersOnlyHint": "Players see PCs only. An anonymous placeholder appears during NPC turns, followed by the next visible PC. The GM view remains complete.",
