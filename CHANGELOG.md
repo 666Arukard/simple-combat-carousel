@@ -1,6 +1,6 @@
 # Simple Combat Carousel 1.1.1
 
-Unreleased / Noch nicht veröffentlicht.
+Released / Veröffentlicht: 2026-11-21.
 
 - Right-click portraits in full and mini views for Hide/Show, Mark defeated/Remove defeated status (GM only), and Ping token.
 - Uses Foundry V14's CombatTracker handlers for hidden/defeated state and Canvas ping for the token center. Does not change HP.
@@ -53,3 +53,4 @@ Released / Veröffentlicht: 2026-11-21.
 - Stabile GitHub-Manifest-Adresse für Foundry-Installation und Updates.
 - Prüfziel 14.370 auf Grundlage des erfolgreichen SL-/Spielertests von 0.1.4 durch den Autor; Übersetzungen/Release-Dateien automatisiert geprüft. Keine Versionsobergrenze.
 - Technische Modul-ID bleibt zum Erhalt der Prototyp-Einstellungen bestehen.
+
