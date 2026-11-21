@@ -1,13 +1,13 @@
-# Simple Combat Carousel 1.0.1
+# Simple Combat Carousel 1.0.2
 
 ## English
 
-- Package URL now points to https://dnd.brunecoaching.de/tools-spielmaterial/simple-combat-carousel.
+- Prepared Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/. This correction is not yet released.
 - Installation and update downloads continue to use GitHub. No combat behavior changes.
 
 ## Deutsch
 
-- Die Package URL verweist jetzt auf https://dnd.brunecoaching.de/tools-spielmaterial/simple-combat-carousel.
+- Vorbereitete Package URL: https://foundryvtt.com/packages/rpg-suite-combat-carousel/. Diese Korrektur ist noch nicht veröffentlicht.
 - Installation und Updates werden weiterhin über GitHub bereitgestellt. Keine Änderungen am Kampfablauf.
 
 # Simple Combat Carousel 1.0.0

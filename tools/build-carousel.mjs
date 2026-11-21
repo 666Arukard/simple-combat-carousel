@@ -16,7 +16,7 @@ assert.equal(manifest.authors[0].name, "Daniel Brune");
 assert.equal(manifest.compatibility.verified, "14.370");
 assert.equal(manifest.compatibility.maximum, undefined);
 const base = "https://github.com/666Arukard/simple-combat-carousel";
-assert.equal(manifest.url, "https://dnd.brunecoaching.de/tools-spielmaterial/simple-combat-carousel");
+assert.equal(manifest.url, "https://foundryvtt.com/packages/rpg-suite-combat-carousel/");
 assert.equal(manifest.manifest, `${base}/releases/latest/download/module.json`);
 assert.equal(manifest.download, `${base}/releases/download/v${pkg.version}/simple-combat-carousel-${pkg.version}.zip`);
 const dist = path.join(root, "dist");
