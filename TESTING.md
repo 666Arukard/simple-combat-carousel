@@ -1,0 +1,11 @@
+# Verification record
+
+- 2026-11-21: Daniel confirmed successful GM and player testing of 0.1.4 on Foundry VTT 14.370.
+- 1.0.0: Combat behavior retained; German/English translations, settings, branding and distribution metadata added.
+- Automated tests cover ownership and active-turn checks, GM-only HP/AC, hidden combatants, turn order, mini-view collapse/expand, mini-view end-turn authorization, language switching, locale completeness and synchronized catalogs.
+- Build checks package identity, version, author, compatibility metadata and stable/versioned distribution URLs. Release workflow additionally checks the archive manifest and language files.
+- No local Foundry installation is available. No independent live test of 1.0.0 or later Foundry versions is claimed.
+
+## Suggested final language smoke test
+
+On Foundry 14.370, open GM and player clients, select English and German independently, reload, and check settings labels, tooltips, expanded/mini views and end-turn buttons. Character and effect names remain world data. Confirm no HP/AC appear for players; toggle the GM health bars. Try a normal Foundry update using the stable manifest URL.

@@ -1,0 +1,53 @@
+name: Test and publish Foundry release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: simple-combat-carousel-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run build
+      - name: Package module and verify archive
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, zipfile
+          manifest = json.loads(pathlib.Path('module.json').read_text())
+          version, module_id = manifest['version'], manifest['id']
+          archive = pathlib.Path('dist') / f'simple-combat-carousel-{version}.zip'
+          with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
+              for file in sorted((pathlib.Path('dist') / module_id).rglob('*')):
+                  if file.is_file():
+                      z.write(file, file.relative_to('dist').as_posix())
+          with zipfile.ZipFile(archive) as z:
+              assert json.loads(z.read(module_id + '/module.json')) == manifest
+              assert module_id + '/lang/de.json' in z.namelist()
+              assert module_id + '/lang/en.json' in z.namelist()
+          PY
+      - name: Publish immutable version and update latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(node -p "JSON.parse(require('fs').readFileSync('module.json')).version")
+          tag="v$version"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "Release $tag already exists; leaving it unchanged."
+            exit 0
+          fi
+          gh release create "$tag" --target "$GITHUB_SHA" --title "Simple Combat Carousel $version" --notes-file CHANGELOG.md --latest "dist/module.json" "dist/simple-combat-carousel-$version.zip"

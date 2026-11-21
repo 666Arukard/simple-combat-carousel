@@ -1,0 +1,11 @@
+{
+  "name": "simple-combat-carousel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node tools/build-carousel.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
