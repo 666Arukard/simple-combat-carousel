@@ -1,3 +1,15 @@
+# Simple Combat Carousel 1.0.1
+
+## English
+
+- Package URL now points to https://dnd.brunecoaching.de/tools-spielmaterial/simple-combat-carousel.
+- Installation and update downloads continue to use GitHub. No combat behavior changes.
+
+## Deutsch
+
+- Die Package URL verweist jetzt auf https://dnd.brunecoaching.de/tools-spielmaterial/simple-combat-carousel.
+- Installation und Updates werden weiterhin über GitHub bereitgestellt. Keine Änderungen am Kampfablauf.
+
 # Simple Combat Carousel 1.0.0
 
 ## English
