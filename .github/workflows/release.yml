@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - run: python3 -m unittest discover -s test -p test_publish_foundry.py
       - run: npm run build
       - name: Package module and verify archive
         run: |
@@ -51,3 +52,7 @@ jobs:
             exit 0
           fi
           gh release create "$tag" --target "$GITHUB_SHA" --title "Simple Combat Carousel $version" --notes-file CHANGELOG.md --latest "dist/module.json" "dist/simple-combat-carousel-$version.zip"
+      - name: Register released version with Foundry
+        env:
+          FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}
+        run: python3 tools/publish-foundry.py
