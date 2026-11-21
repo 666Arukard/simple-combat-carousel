@@ -7,7 +7,7 @@
 .rsc-card { position:relative; width:var(--rsc-size); height:calc(var(--rsc-size) * 1.22); flex:none; border:2px solid #595d6a; border-radius:8px; background:#222; isolation:isolate; }
 .rsc-avatar { width:100%; height:100%; object-fit:cover; border:0; border-radius:6px; }
 .rsc-card.is-active { border-color:#ffd66d; box-shadow:0 0 12px #ffc74799; width:calc(var(--rsc-size) * 1.13); height:calc(var(--rsc-size) * 1.38); }
-.rsc-card.is-next { border-color:#9abce7; }
+.rsc-card.is-next:not(.is-active) { border-color:#9abce7; }
 .rsc-card.is-defeated .rsc-avatar { filter:grayscale(1); opacity:.5; }
 .rsc-init { position:absolute; top:3px; left:3px; padding:1px 5px; background:#111d; border-radius:4px; font-weight:bold; font-size:14px; }
 .rsc-name { position:absolute; bottom:0; left:0; right:0; padding:14px 3px 5px; background:linear-gradient(transparent,#000e); font-size:11px; text-align:center; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; border-radius:0 0 6px 6px; }
@@ -18,6 +18,10 @@
 .rsc-card:hover .rsc-ac, .rsc-card:focus-within .rsc-ac { display:block; }
 .rsc-hp { position:absolute; bottom:-3px; left:0; right:0; height:5px; background:#442b32; border-radius:3px; overflow:hidden; }
 .rsc-hp span { display:block; height:100%; background:#65c489; }
+.rsc-hp.is-bloodied span { background:#f39b32; }
+.rsc-hp.is-critical span, .rsc-hp.is-danger span { background:#e34444; }
+.rsc-danger-overlay { position:absolute; inset:0; background:rgba(225,20,30,.38); border-radius:6px; pointer-events:none; }
+.rsc-compact-frame { position:relative; display:inline-flex; flex:none; }
 .rsc-controls-right { grid-template-columns:30px; }
 .rsc-carousel > .rsc-toggle { position:absolute; bottom:-22px; left:50%; transform:translateX(-50%); width:36px; height:20px; line-height:16px; }
 .rsc-carousel.is-collapsed { left:50%; right:auto; top:8px; transform:translateX(-50%); gap:8px; padding:4px 8px; max-width:calc(100vw - 20px); border-radius:6px; }

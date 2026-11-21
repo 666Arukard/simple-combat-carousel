@@ -1,4 +1,16 @@
-# Simple Combat Carousel 1.0.2
+# Simple Combat Carousel 1.1.0
+
+Unreleased / Noch nicht veröffentlicht.
+
+- Optional GM-configured PC-only player view with anonymous NPC-turn placeholder and next visible PC. Full order remains the default.
+- Health bars: orange at 50% and below, red at 25% and below; translucent red portrait overlay at 10% and below. GM-only, follows the health-bar visibility setting, including the mini-view overlay.
+- Only conditions and temporary effects are shown; passive effects such as Defense no longer appear as condition icons.
+- Initiative buttons use Foundry's bundled Font Awesome D20 icon.
+
+- Optionale SC-Ansicht für Spieler mit anonymem NSC-Platzhalter und nächstem sichtbaren SC. Die vollständige Reihenfolge bleibt Standard.
+- Lebensbalken bis einschließlich 50% orange, bis 25% rot; bis 10% transparente rote Überblendung des Porträts. Nur für den SL, an die Lebensbalken-Einstellung gebunden; Überblendung auch in der Miniansicht.
+- Nur Zustände und temporäre Effekte als Icons; keine passiven Effekte wie Defense.
+- Initiativeknöpfe verwenden Foundrys eingebundenes Font-Awesome-D20-Icon.
 
 ## English
 

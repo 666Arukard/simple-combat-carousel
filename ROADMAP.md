@@ -2,12 +2,12 @@
 
 These are plans, not features included in 1.0.0.
 
-- Independently configure how many combatants appear before and after the active combatant, e.g. one previous and three upcoming combatants.
-- Optional player-facing PC-only view: show player characters; use anonymous placeholders during non-PC turns while indicating the next PC. Do not expose hidden enemy identities.
+- Display-count settings were dropped by Daniel: retain all combatants, starting with the active one and then the remaining turn order.
+- PC-only player view is prepared for unreleased 1.1.0, including an anonymous current NPC-turn placeholder and next visible PC.
 - Optional, switchable integration into RPG Suite while retaining standalone use.
 
 Diese Punkte sind vorgemerkt, in 1.0.0 aber noch nicht umgesetzt:
 
-- Anzahl der Charaktere vor und nach dem aktiven Charakter getrennt einstellen, z. B. einen vorherigen und drei nachfolgende.
-- Optionale Ansicht für Teilnehmer mit ausschließlich Spielercharakteren. Während Nicht-SC-Zügen einen anonymen Platzhalter zeigen und auf den nächsten SC hinweisen. Keine versteckten Gegneridentitäten verraten.
+- Die getrennte Anzahl vor/nach dem aktiven Charakter entfällt nach Daniels Entscheidung. Alle Teilnehmer bleiben in Zugreihenfolge sichtbar, beginnend beim aktiven Charakter.
+- Die optionale SC-Ansicht ist für die noch unveröffentlichte 1.1.0 vorbereitet: anonymer Platzhalter beim NSC-Zug und nächster sichtbarer SC.
 - Spätere Integration als optional zuschaltbare Funktion der RPG Suite bei weiterhin eigenständiger Nutzung.

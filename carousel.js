@@ -1,4 +1,4 @@
-import { canEndTurn, portraitData } from "./model.js";
+import { canEndTurn, carouselRows, healthState } from "./model.js";
 import { t } from "./i18n.js";
 
 const ID = "rpg-suite-combat-carousel";
@@ -11,7 +11,10 @@ const el = (tag, cls, text) => {
 };
 
 function button(parent, label, icon, action, disabled = false) {
-  const b = el("button", "rsc-button", icon);
+  const b = el("button", "rsc-button", icon.startsWith("fa-") ? undefined : icon);
+  if (icon.startsWith("fa-")) {
+    const glyph = el("i", icon); glyph.setAttribute("aria-hidden", "true"); b.append(glyph);
+  }
   b.type = "button"; b.title = label; b.setAttribute("aria-label", label);
   b.disabled = disabled || busy;
   b.addEventListener("click", async event => {
@@ -34,6 +37,8 @@ function render() {
   root = el("section", "rsc-carousel"); root.id = ID;
   root.setAttribute("aria-label", t("Order"));
   root.style.setProperty("--rsc-size", `${game.settings.get(ID, "portraitSize")}px`);
+  const rows = carouselRows(combat, game.user, t, game.settings.get(ID, "playersOnly"));
+  const showHealth = game.user.isGM && game.settings.get(ID, "showHealthBars");
   const collapsed = game.settings.get(ID, "collapsed");
   const toggle = button(root, t(collapsed ? "Expand" : "Collapse"), collapsed ? "▾" : "▴",
     () => game.settings.set(ID, "collapsed", !game.settings.get(ID, "collapsed")));
@@ -42,13 +47,16 @@ function render() {
   if (collapsed) {
     root.className += " is-collapsed";
     root.append(el("span", "rsc-compact-label", t("CompactRound", { round: combat.round ?? 0 })));
-    const rows = portraitData(combat, game.user, t);
     for (const [label, participant] of [[t("Active"), rows.find(p => p.active)], [t("Next"), rows.find(p => p.next)]]) {
       const slot = el("div", "rsc-compact-participant");
       if (participant) {
+        const frame = el("span", "rsc-compact-frame");
         const image = el("img", "rsc-compact-avatar");
         image.src = participant.img; image.alt = participant.name;
-        slot.append(image);
+        frame.append(image);
+        if (showHealth && healthState(participant.hpPercent) === "danger")
+          frame.append(el("span", "rsc-danger-overlay"));
+        slot.append(frame);
       }
       const text = el("div", "rsc-compact-text");
       text.append(el("span", "rsc-compact-role", label));
@@ -71,8 +79,8 @@ function render() {
     const gmAction = method => async () => {
       if (game.user.isGM && game.combat?.id === combat.id) await combat[method]();
     };
-    button(controls, t("RollNPC"), "♟⚄", gmAction("rollNPC"));
-    button(controls, t("RollAll"), "⚄", gmAction("rollAll"));
+    button(controls, t("RollNPC"), "fa-solid fa-dice-d20", gmAction("rollNPC"));
+    button(controls, t("RollAll"), "fa-solid fa-dice-d20", gmAction("rollAll"));
     button(controls, t("PreviousTurn"), "‹", gmAction("previousTurn"), !combat.started);
     button(controls, t("PreviousRound"), "«", gmAction("previousRound"), !combat.started || combat.round <= 1);
     if (!combat.started) button(rightControls, t("Start"), "▶", gmAction("startCombat"));
@@ -88,11 +96,12 @@ function render() {
   }
   root.append(controls);
   const portraits = el("div", "rsc-portraits");
-  for (const p of portraitData(combat, game.user, t)) {
+  for (const p of rows) {
     if (p.roundBreak) portraits.append(el("span", "rsc-break", "↻"));
     const card = el("article", `rsc-card${p.active ? " is-active" : ""}${p.next ? " is-next" : ""}${p.defeated ? " is-defeated" : ""}`);
     card.setAttribute("aria-label", `${p.name}${p.active ? `, ${t("Active")}` : p.next ? `, ${t("Next")}` : ""}`);
     const image = el("img", "rsc-avatar"); image.src = p.img; image.alt = p.name; card.append(image);
+    if (showHealth && healthState(p.hpPercent) === "danger") card.append(el("span", "rsc-danger-overlay"));
     card.append(el("span", "rsc-init", String(p.initiative)));
     card.append(el("span", "rsc-name", `${p.hidden ? "◌ " : ""}${p.name}`));
     if (p.active || p.next) card.append(el("span", "rsc-order", t(p.active ? "Active" : "Next")));
@@ -103,8 +112,8 @@ function render() {
     }
     card.append(effects);
     if (game.user.isGM && p.ac != null) card.append(el("span", "rsc-ac", t("AC", { value: p.ac })));
-    if (game.user.isGM && game.settings.get(ID, "showHealthBars") && p.hpPercent !== undefined) {
-      const bar = el("div", "rsc-hp"); bar.setAttribute("aria-label", t("HP"));
+    if (showHealth && p.hpPercent !== undefined) {
+      const bar = el("div", `rsc-hp is-${healthState(p.hpPercent)}`); bar.setAttribute("aria-label", t("HP"));
       const fill = el("span"); fill.style.width = `${p.hpPercent}%`; bar.append(fill); card.append(bar);
     }
     portraits.append(card);
@@ -118,6 +127,7 @@ function schedule() {
   requestAnimationFrame(() => { scheduled = false; render(); });
 }
 Hooks.once("init", () => {
+  game.settings.register(ID, "playersOnly", { name: t("PlayersOnlyName"), hint: t("PlayersOnlyHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "language", { name: t("LanguageName"), hint: t("LanguageHint"), scope: "client", config: true, type: String, default: "auto", choices: { auto: t("Automatic"), de: "Deutsch", en: "English" }, requiresReload: true, onChange: schedule });
   game.settings.register(ID, "collapsed", { name: t("CollapsedName"), hint: t("CollapsedHint"), scope: "client", config: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "showHealthBars", { name: t("HealthName"), hint: t("HealthHint"), scope: "client", config: true, type: Boolean, default: true, onChange: schedule });

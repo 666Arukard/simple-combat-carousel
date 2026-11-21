@@ -29,10 +29,17 @@ test("Steuerung liegt außerhalb der Avatare; SL-Balken sind abschaltbar", async
   assert.equal(find("rsc-hp").length, 1);
   assert.equal(find("rsc-card")[0].querySelectorAll("button").length, 0);
   assert.equal(find("rsc-controls-left")[0].querySelectorAll("button").length, 4);
+  const diceButtons = find("rsc-controls-left")[0].querySelectorAll("button").slice(0, 2);
+  for (const button of diceButtons) assert.equal(button.children[0].className, "fa-solid fa-dice-d20");
+  actor.system.attributes.hp.value = 1;
+  settings.get("showHealthBars").onChange();
+  assert.equal(find("rsc-danger-overlay").length, 1);
+  assert.equal(find("rsc-hp")[0].className, "rsc-hp is-danger");
   assert.equal(find("rsc-controls-right")[0].querySelectorAll("button").length, 2);
   settings.get("showHealthBars").default = false;
   settings.get("showHealthBars").onChange();
   assert.equal(find("rsc-hp").length, 0);
+  assert.equal(find("rsc-danger-overlay").length, 0);
   game.user.isGM = false;
   settings.get("showHealthBars").default = true;
   settings.get("showHealthBars").onChange();

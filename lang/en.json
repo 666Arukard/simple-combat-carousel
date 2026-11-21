@@ -1,5 +1,8 @@
 {
   "SCC.Order": "Combat order",
+  "SCC.NPCTurn": "NPC turn",
+  "SCC.PlayersOnlyName": "Player view: player characters only",
+  "SCC.PlayersOnlyHint": "Players see PCs only. An anonymous placeholder appears during NPC turns, followed by the next visible PC. The GM view remains complete.",
   "SCC.Expand": "Expand carousel",
   "SCC.Collapse": "Collapse carousel",
   "SCC.CompactRound": "Combat · Round {round}",
