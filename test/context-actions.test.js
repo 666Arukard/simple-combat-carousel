@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { contextActions, runContextAction, openCombatantSheet, applyPortraitAction, addPortraitMenuEntries } from "../context-actions.js";
+import { contextActions, runContextAction, openCombatantSheet, applyPortraitAction, addPortraitMenuEntries, PORTRAIT_ACTIONS } from "../context-actions.js";
 import { portraitImage, portraitPreferences } from "../model.js";
 
 function fixture() {
@@ -34,7 +34,7 @@ test("Bogen öffnet für SL und berechtigte Spieler mit nativer eingeschränkter
 
 test("SL-Aktionen verwenden Foundrys CombatTracker-Handler, Ping verwendet die Tokenmitte", async () => {
   const f = fixture();
-  assert.deepEqual(contextActions(f.combatant, f.game.user, f.canvas), ["hidden", "defeated", "ping", "sourceDefault", "sourceAvatar", "sourceToken", "featured"]);
+  assert.deepEqual(contextActions(f.combatant, f.game.user, f.canvas), ["hidden", "defeated", "ping", ...PORTRAIT_ACTIONS]);
   for (const action of ["hidden", "defeated", "ping"]) await runContextAction(action, "combat", "a", f);
   assert.deepEqual(f.calls.map(c => c[0]), ["hidden", "defeated", "ping"]);
   assert.deepEqual(f.calls[2][1], { x: 100, y: 200 });
@@ -68,7 +68,7 @@ test("Combat-Reiter-Menü nutzt den angezeigten Kampf, prüft erneut Rechte und 
   f.game.combat = { id: "different", combatants: new Map() };
   const items = [];
   addPortraitMenuEntries({ viewed }, items, { game: f.game, translate: k => k, onError: e => { throw e; } });
-  assert.equal(items.length, 4);
+  assert.equal(items.length, 8);
   const entry = { dataset: { combatantId: "a" } };
   assert.equal(items[1].condition(entry), true);
   await items[1].callback(entry);
@@ -107,4 +107,20 @@ test("Berechtigung, Szenenwechsel und gelöschte Teilnehmer werden beim Ausführ
   f.game.combat.combatants.clear();
   assert.equal(await runContextAction("defeated", "combat", "a", f), false);
   assert.equal(f.calls.length, 0);
+});
+
+test("Rahmen pro Teilnehmer, Legacy-Fallback und SL-Rechte", async () => {
+ const f=fixture(), c=f.combatant;
+ c.flags={'rpg-suite-combat-carousel':{featured:true}};
+ c.setFlag=async(scope,key,value)=>c.flags[scope][key]=value;
+ assert.equal(portraitPreferences(c).frame,'ornate');
+ for(const [action,frame] of [['frameEnemy','enemy'],['frameBoss','boss'],['frameAlly','ally'],['frameNone','none']]){
+  await runContextAction(action,'combat','a',f);
+  assert.equal(portraitPreferences(c).frame,frame);
+ }
+ f.game.user.isGM=false;
+ assert.equal(await applyPortraitAction('frameBoss',c,f.game.user),false);
+ assert.equal(portraitPreferences(c).frame,'none');
+ c.flags['rpg-suite-combat-carousel'].frameStyle='invalid';
+ assert.equal(portraitPreferences(c).frame,'ornate');
 });
