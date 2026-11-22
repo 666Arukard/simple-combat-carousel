@@ -1,11 +1,18 @@
-# Simple Combat Carousel 1.2.0
+# Simple Combat Carousel 2.0.0
 
 Unreleased / Noch nicht veröffentlicht.
 
+- Double-click a portrait in full or mini view to open the character sheet using existing document permissions.
+- Separate GM-controlled pre-combat visibility settings: players hidden until combat starts by default; GMs can see the preparation view by default.
+- Initiative icons and order match the regular Combat Tracker: Roll All (users), Roll NPCs (users with gear).
+- Doppelklick auf Porträts in Groß- und Miniansicht öffnet den Charakterbogen mit vorhandenen Dokumentrechten.
+- Getrennte SL-Einstellungen für die Anzeige vor Kampfstart: Spieler standardmäßig erst nach Start, SL standardmäßig bereits zur Vorbereitung.
+- Icons und Reihenfolge wie im Combat-Reiter: Alle würfeln (Gruppe), NSC würfeln (Gruppe mit Zahnrad).
+
 - GM-configured world setting for actor portraits (default) or scene token images in full and mini views, with fallback for missing images.
-- Carousel is shown only after combat starts by default. The GM can disable this setting to show combat preparation again.
+- The player carousel is shown only after combat starts by default; GM visibility is configured separately.
 - Weltweite SL-Einstellung für Avatar-Bilder (Standard) oder Szenentoken-Bilder in Groß- und Miniansicht, mit Ersatzquelle bei fehlendem Bild.
-- Das Carousel erscheint standardmäßig erst nach Kampfstart; die Spielleitung kann diese Einstellung abschalten.
+- Das Spieler-Carousel erscheint standardmäßig erst nach Kampfstart; die SL-Anzeige ist getrennt einstellbar.
 - Per-combatant image overrides, special highlights and legendary-action interludes remain future work.
 
 # Simple Combat Carousel 1.1.1

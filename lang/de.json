@@ -1,5 +1,10 @@
 {
   "SCC.Order": "Kampfreihenfolge",
+  "SCC.NoSheetAccess": "Dieser Charakterbogen ist nicht verfügbar oder du hast keine Leseberechtigung.",
+  "SCC.PlayersStartedName": "Spieler: erst nach Kampfstart anzeigen",
+  "SCC.PlayersStartedHint": "Blendet das Carousel für Spieler bis zum Kampfstart aus. Die Spielleitung legt diese Einstellung für alle Spieler fest.",
+  "SCC.GMStartedName": "Spielleitung: erst nach Kampfstart anzeigen",
+  "SCC.GMStartedHint": "Blendet das Carousel auch für die Spielleitung bis zum Kampfstart aus. Ausgeschaltet kann der SL die Anzeige bereits während der Vorbereitung nutzen.",
   "SCC.ImageSourceName": "Porträt-Bildquelle",
   "SCC.ImageSourceHint": "Wählt für alle Teilnehmer Avatar-Bilder oder die Bilder der Szenentokens. Bei fehlendem Bild wird die andere Quelle verwendet. Gilt auch für die Miniansicht.",
   "SCC.AvatarImage": "Avatar-Bild (Standard)",

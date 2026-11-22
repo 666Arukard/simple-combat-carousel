@@ -7,6 +7,17 @@ export function pingToken(combatant, user, canvas) {
   return token;
 }
 
+export async function openCombatantSheet(combatId, combatantId, game) {
+  if (game.combat?.id !== combatId) return false;
+  const combatant = game.combat.combatants.get(combatantId);
+  const actor = combatant?.actor;
+  if (!actor?.sheet || (!game.user.isGM && (combatant.hidden || combatant.visible === false
+    || !actor.testUserPermission(game.user, "LIMITED")))) return false;
+  // Foundry's sheet selects the permitted full/limited presentation for this user.
+  await actor.sheet.render(true);
+  return true;
+}
+
 export function contextActions(combatant, user, canvas) {
   if (!combatant) return [];
   const actions = user.isGM ? ["hidden", "defeated"] : [];

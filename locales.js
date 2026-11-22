@@ -2,6 +2,11 @@
 export const catalogs = {
   "de": {
     "SCC.Order": "Kampfreihenfolge",
+    "SCC.NoSheetAccess": "Dieser Charakterbogen ist nicht verfügbar oder du hast keine Leseberechtigung.",
+    "SCC.PlayersStartedName": "Spieler: erst nach Kampfstart anzeigen",
+    "SCC.PlayersStartedHint": "Blendet das Carousel für Spieler bis zum Kampfstart aus. Die Spielleitung legt diese Einstellung für alle Spieler fest.",
+    "SCC.GMStartedName": "Spielleitung: erst nach Kampfstart anzeigen",
+    "SCC.GMStartedHint": "Blendet das Carousel auch für die Spielleitung bis zum Kampfstart aus. Ausgeschaltet kann der SL die Anzeige bereits während der Vorbereitung nutzen.",
     "SCC.ImageSourceName": "Porträt-Bildquelle",
     "SCC.ImageSourceHint": "Wählt für alle Teilnehmer Avatar-Bilder oder die Bilder der Szenentokens. Bei fehlendem Bild wird die andere Quelle verwendet. Gilt auch für die Miniansicht.",
     "SCC.AvatarImage": "Avatar-Bild (Standard)",
@@ -49,6 +54,11 @@ export const catalogs = {
   },
   "en": {
     "SCC.Order": "Combat order",
+    "SCC.NoSheetAccess": "This character sheet is unavailable or you do not have permission to view it.",
+    "SCC.PlayersStartedName": "Players: show only after combat starts",
+    "SCC.PlayersStartedHint": "Hide the carousel from players until combat starts. The GM controls this setting for all players.",
+    "SCC.GMStartedName": "GM: show only after combat starts",
+    "SCC.GMStartedHint": "Also hide the carousel from GMs until combat starts. When disabled, GMs can use it during combat preparation.",
     "SCC.ImageSourceName": "Portrait image source",
     "SCC.ImageSourceHint": "Choose actor portraits or scene token images for all participants. Falls back to the other source if an image is missing. Also applies to the mini view.",
     "SCC.AvatarImage": "Actor portrait (default)",

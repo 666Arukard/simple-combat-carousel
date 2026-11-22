@@ -1,6 +1,6 @@
 import { canEndTurn, carouselRows, healthState } from "./model.js";
 import { t } from "./i18n.js";
-import { contextActions, runContextAction } from "./context-actions.js";
+import { contextActions, runContextAction, openCombatantSheet } from "./context-actions.js";
 
 const ID = "rpg-suite-combat-carousel";
 let root, busy = false, scheduled = false;
@@ -40,6 +40,17 @@ function closeContextMenu() {
 function bindContextMenu(element, combat, portrait) {
   if (portrait.placeholder) return;
   element.tabIndex = 0;
+  let openingSheet = false;
+  element.addEventListener("dblclick", async event => {
+    if (event.target?.closest?.("button, .rsc-effects") || openingSheet) return;
+    event.preventDefault(); event.stopPropagation(); closeContextMenu();
+    openingSheet = true;
+    try {
+      const opened = await openCombatantSheet(combat.id, portrait.id, game);
+      if (!opened) ui.notifications.warn(t("NoSheetAccess"));
+    } catch (error) { console.error(ID, error); ui.notifications.error(t("ActionFailed")); }
+    finally { openingSheet = false; }
+  });
   element.addEventListener("contextmenu", event => {
     event.preventDefault(); event.stopPropagation(); closeContextMenu();
     if (busy || game.combat?.id !== combat.id) return;
@@ -89,7 +100,7 @@ function render() {
   root?.remove(); root = null;
   const combat = game.combat;
   if (!game.settings.get(ID, "enabled") || !combat?.turns?.length
-    || (game.settings.get(ID, "onlyStarted") && !combat.started)) return;
+    || (game.settings.get(ID, game.user.isGM ? "gmOnlyStarted" : "onlyStarted") && !combat.started)) return;
   root = el("section", "rsc-carousel"); root.id = ID;
   root.setAttribute("aria-label", t("Order"));
   root.style.setProperty("--rsc-size", `${game.settings.get(ID, "portraitSize")}px`);
@@ -136,8 +147,8 @@ function render() {
     const gmAction = method => async () => {
       if (game.user.isGM && game.combat?.id === combat.id) await combat[method]();
     };
-    button(controls, t("RollNPC"), "fa-solid fa-dice-d20", gmAction("rollNPC"));
-    button(controls, t("RollAll"), "fa-solid fa-dice-d20", gmAction("rollAll"));
+    button(controls, t("RollAll"), "fa-solid fa-users", gmAction("rollAll"));
+    button(controls, t("RollNPC"), "fa-solid fa-users-gear", gmAction("rollNPC"));
     button(controls, t("PreviousTurn"), "‹", gmAction("previousTurn"), !combat.started);
     button(controls, t("PreviousRound"), "«", gmAction("previousRound"), !combat.started || combat.round <= 1);
     if (!combat.started) button(rightControls, t("Start"), "▶", gmAction("startCombat"));
@@ -186,7 +197,8 @@ function schedule() {
 }
 Hooks.once("init", () => {
   game.settings.register(ID, "imageSource", { name: t("ImageSourceName"), hint: t("ImageSourceHint"), scope: "world", config: true, restricted: true, type: String, default: "avatar", choices: { avatar: t("AvatarImage"), token: t("TokenImage") }, onChange: schedule });
-  game.settings.register(ID, "onlyStarted", { name: t("OnlyStartedName"), hint: t("OnlyStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: true, onChange: schedule });
+  game.settings.register(ID, "onlyStarted", { name: t("PlayersStartedName"), hint: t("PlayersStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: true, onChange: schedule });
+  game.settings.register(ID, "gmOnlyStarted", { name: t("GMStartedName"), hint: t("GMStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "playersOnly", { name: t("PlayersOnlyName"), hint: t("PlayersOnlyHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "language", { name: t("LanguageName"), hint: t("LanguageHint"), scope: "client", config: true, type: String, default: "auto", choices: { auto: t("Automatic"), de: "Deutsch", en: "English" }, requiresReload: true, onChange: schedule });
   game.settings.register(ID, "collapsed", { name: t("CollapsedName"), hint: t("CollapsedHint"), scope: "client", config: true, type: Boolean, default: false, onChange: schedule });

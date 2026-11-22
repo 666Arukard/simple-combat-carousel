@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { contextActions, runContextAction } from "../context-actions.js";
+import { contextActions, runContextAction, openCombatantSheet } from "../context-actions.js";
 
 function fixture() {
   const token = { center: { x: 100, y: 200 }, isVisible: true };
@@ -12,6 +12,24 @@ function fixture() {
     _onToggleDefeatedStatus: async c => calls.push(["defeated", c]) };
   return { token, combatant, game, canvas, tracker, calls };
 }
+
+test("Bogen öffnet für SL und berechtigte Spieler mit nativer eingeschränkter Ansicht", async () => {
+  const f = fixture(); let opened = 0;
+  f.combatant.actor = { sheet: { render: async force => { assert.equal(force, true); opened++; } },
+    testUserPermission: (user, level) => { assert.equal(level, "LIMITED"); return true; } };
+  assert.equal(await openCombatantSheet("combat", "a", f.game), true);
+  f.game.user.isGM = false;
+  assert.equal(await openCombatantSheet("combat", "a", f.game), true);
+  assert.equal(opened, 2);
+  f.combatant.actor.testUserPermission = () => false;
+  assert.equal(await openCombatantSheet("combat", "a", f.game), false);
+  f.combatant.actor.testUserPermission = () => true;
+  f.combatant.hidden = true;
+  assert.equal(await openCombatantSheet("combat", "a", f.game), false);
+  assert.equal(await openCombatantSheet("old-combat", "a", f.game), false);
+  assert.equal(await openCombatantSheet("combat", "npc-turn", f.game), false);
+  assert.equal(opened, 2);
+});
 
 test("SL-Aktionen verwenden Foundrys CombatTracker-Handler, Ping verwendet die Tokenmitte", async () => {
   const f = fixture();
