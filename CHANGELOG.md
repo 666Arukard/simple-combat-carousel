@@ -1,6 +1,6 @@
 # Simple Combat Carousel 2.0.0
 
-Unreleased / Noch nicht veröffentlicht.
+Released / Veröffentlicht: 2026-11-22.
 
 - Double-click a portrait in full or mini view to open the character sheet using existing document permissions.
 - Separate GM-controlled pre-combat visibility settings: players hidden until combat starts by default; GMs can see the preparation view by default.
@@ -70,4 +70,5 @@ Released / Veröffentlicht: 2026-11-21.
 - Stabile GitHub-Manifest-Adresse für Foundry-Installation und Updates.
 - Prüfziel 14.370 auf Grundlage des erfolgreichen SL-/Spielertests von 0.1.4 durch den Autor; Übersetzungen/Release-Dateien automatisiert geprüft. Keine Versionsobergrenze.
 - Technische Modul-ID bleibt zum Erhalt der Prototyp-Einstellungen bestehen.
+
 

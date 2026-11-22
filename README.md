@@ -4,7 +4,7 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
-Prepared for 2.0.0, not released: double-click a portrait to open its character sheet with existing permissions. The GM selects actor portraits (default) or scene token images. Separate world settings control pre-combat visibility for players (hidden by default) and GMs (visible by default). Initiative icons match the Combat Tracker: Roll All (group), Roll NPCs (group with gear).
+New in 2.0.0: double-click a portrait to open its character sheet with existing permissions. The GM selects actor portraits (default) or scene token images. Separate world settings control pre-combat visibility for players (hidden by default) and GMs (visible by default). Initiative icons match the Combat Tracker: Roll All (group), Roll NPCs (group with gear).
 
 New in 1.1.1: right-click a portrait (also in mini view) to open Hide/Show, Mark defeated/Remove defeated status (GM only), or Ping token. This uses Foundry's combat-tracker behavior without changing HP. Players can ping visible tokens in the current scene. Anonymous placeholders have no menu. Close with Escape or an outside click; keyboard arrows navigate the menu.
 
@@ -32,7 +32,7 @@ Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player t
 
 ## Deutsch
 
-Für 2.0.0 vorbereitet, noch unveröffentlicht: Doppelklick auf ein Porträt öffnet den Charakterbogen mit vorhandenen Zugriffsrechten. Der SL wählt Avatar-Bilder (Standard) oder Szenentoken-Bilder. Zwei getrennte Welt-Einstellungen steuern die Sichtbarkeit vor Kampfstart: Spieler standardmäßig ausgeblendet, SL standardmäßig eingeblendet. Initiative-Icons wie im Combat-Reiter: Alle würfeln (Gruppe), NSC würfeln (Gruppe mit Zahnrad).
+Neu in 2.0.0: Doppelklick auf ein Porträt öffnet den Charakterbogen mit vorhandenen Zugriffsrechten. Der SL wählt Avatar-Bilder (Standard) oder Szenentoken-Bilder. Zwei getrennte Welt-Einstellungen steuern die Sichtbarkeit vor Kampfstart: Spieler standardmäßig ausgeblendet, SL standardmäßig eingeblendet. Initiative-Icons wie im Combat-Reiter: Alle würfeln (Gruppe), NSC würfeln (Gruppe mit Zahnrad).
 
 Neu in 1.1.1: Rechtsklick auf ein Porträt (auch minimiert) öffnet Verstecken/Einblenden, Als besiegt markieren/Markierung entfernen (nur SL) sowie Token anpingen. Dabei wird Foundrys Combat-Verhalten verwendet; HP bleiben unverändert. Spieler können sichtbare Tokens der aktuellen Szene anpingen. Anonyme Platzhalter erhalten kein Menü. Escape oder Klick außerhalb schließt das Menü, Pfeiltasten navigieren.
 
@@ -53,6 +53,7 @@ Die oben genannte Manifest-Adresse unter **Modul installieren → Manifest-URL**
 Die Angabe **verified: 14.370** beruht auf Daniels bestätigtem Praxistest von 0.1.4 mit Spielleiter- und Spieleransicht. Die Übersetzungen und Release-Dateien von 1.0.0 wurden zusätzlich automatisiert geprüft. Keine Versionsobergrenze; spätere Foundry-Versionen werden nicht pauschal gesperrt, sind aber noch nicht praktisch abgenommen. HP/RK verwenden D&D-5e-Wertepfade.
 
 Eigenständige Implementierung mit KI-Unterstützung durch ChatGPT/Codex. Carousel Combat Tracker diente als Funktionsreferenz, ohne Codeübernahme oder Laufzeitabhängigkeit. Eine spätere optionale Integration in die RPG Suite ist geplant. Weitere Ideen stehen in [ROADMAP.md](ROADMAP.md), noch ohne Implementierung.
+
 
 
 
