@@ -1,8 +1,18 @@
 # Foundry package listing – Simple Combat Carousel 2.0.0
 
+## English summary
+
+A compact combat carousel with current and next turns, portrait or token images, character-sheet access, and separate player and GM visibility settings.
+
+## Deutsche Summary
+
+Kompaktes Combat Carousel mit aktuellem und nächstem Zug, Avatar- oder Tokenbildern, Charakterbogen-Zugriff und getrennten Sichtbarkeitseinstellungen für Spieler und SL.
+
 ## English description
 
 Simple Combat Carousel brings a compact, centered combat overview to Foundry VTT. See initiative, active conditions, the current combatant and who acts next at a glance. Collapse the carousel into a small bar showing the current and next combatant with portraits and names, and end your turn directly from either view.
+
+Version 2.0.0 lets the GM choose actor portraits or scene token images, with actor portraits as the default. Double-click a portrait to open its character sheet using existing permissions. Separate settings control whether players and GMs see the carousel before combat starts; players see it only after combat starts by default. Right-click portraits for GM hide/show and defeated controls, plus token ping where visibility permits. These portrait interactions also work in the mini view.
 
 Players can advance only their own active turn. The GM has initiative and combat controls beside the carousel, with optional health bars enabled by default and armor class shown on hover. Health bars and armor class are visible exclusively to the GM; these values currently support D&D 5e. Hidden combatants remain hidden from players.
 
@@ -11,6 +21,8 @@ Choose German or English in the module settings, or follow Foundry's language au
 ## Deutsche Beschreibung
 
 Simple Combat Carousel ergänzt Foundry VTT um eine kompakte Kampfübersicht oben mittig. Initiative, aktive Zustände, der aktuelle Charakter und der nächste Zug sind auf einen Blick erkennbar. Das Carousel lässt sich auf eine kleine Leiste mit Bildern und Namen des aktuellen und nächsten Charakters einklappen. Der eigene Zug kann direkt in beiden Ansichten beendet werden.
+
+In Version 2.0.0 wählt der SL zwischen Avatar-Bildern (Standard) und Szenentoken-Bildern. Ein Doppelklick auf ein Porträt öffnet den Charakterbogen mit vorhandenen Zugriffsrechten. Getrennte Einstellungen bestimmen die Sichtbarkeit vor Kampfstart für Spieler und Spielleitung; Spieler sehen das Carousel standardmäßig erst nach Kampfstart. Das Rechtsklick-Menü bietet Verstecken/Einblenden und Besiegt-Markierung für den SL sowie Token-Ping, soweit die Sichtbarkeit es erlaubt. Diese Porträtaktionen funktionieren auch in der Miniansicht.
 
 Spieler können ausschließlich ihren eigenen aktiven Zug weiterschalten. Die Spielleitung erhält Initiative- und Kampfsteuerung neben dem Carousel sowie optionale, standardmäßig eingeschaltete Lebensbalken und die RK beim Hover. Lebensbalken und RK sind ausschließlich für die Spielleitung sichtbar; diese Werte unterstützen derzeit D&D 5e. Versteckte Kampfteilnehmer bleiben für Spieler verborgen.
 
