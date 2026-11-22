@@ -1,3 +1,12 @@
+# Simple Combat Carousel 2.1.0
+
+Unreleased / Noch nicht veröffentlicht.
+
+- Three GM-only world settings independently configure the orange health bar, red health bar and red portrait-overlay thresholds (0–100%). Defaults remain 50%, 25%, 10%.
+- Inclusive boundaries; red takes priority over orange on overlap. The overlay threshold does not change the bar color. Full/mini views and GM-only health visibility are preserved.
+- Drei SL-Welteinstellungen für die Schwellen von orangem Balken, rotem Balken und rotem Porträtschleier (0–100%). Standard bleibt 50%, 25%, 10%.
+- Grenzen gelten einschließlich; Rot hat bei Überschneidungen Vorrang. Der Schleier ist unabhängig von der Balkenfarbe. Anzeige weiterhin nur beim SL und an die Lebensbalken-Einstellung gebunden.
+
 # Simple Combat Carousel 2.0.0
 
 Released / Veröffentlicht: 2026-11-22.

@@ -2,6 +2,10 @@
 export const catalogs = {
   "de": {
     "SCC.Order": "Kampfreihenfolge",
+    "SCC.HealthOrange": "Lebensbalken orange bis einschließlich (%)",
+    "SCC.HealthRed": "Lebensbalken rot bis einschließlich (%)",
+    "SCC.HealthOverlay": "Roter Porträtschleier bis einschließlich (%)",
+    "SCC.HealthThresholdHint": "Schwelle von 0 bis 100 Prozent der maximalen HP. Rot hat bei Überschneidungen Vorrang vor Orange; der Schleier ist unabhängig. Gilt nur für die SL-Lebensanzeige und auch in der Miniansicht.",
     "SCC.NoSheetAccess": "Dieser Charakterbogen ist nicht verfügbar oder du hast keine Leseberechtigung.",
     "SCC.PlayersStartedName": "Spieler: erst nach Kampfstart anzeigen",
     "SCC.PlayersStartedHint": "Blendet das Carousel für Spieler bis zum Kampfstart aus. Die Spielleitung legt diese Einstellung für alle Spieler fest.",
@@ -54,6 +58,10 @@ export const catalogs = {
   },
   "en": {
     "SCC.Order": "Combat order",
+    "SCC.HealthOrange": "Orange health bar at or below (%)",
+    "SCC.HealthRed": "Red health bar at or below (%)",
+    "SCC.HealthOverlay": "Red portrait overlay at or below (%)",
+    "SCC.HealthThresholdHint": "Threshold from 0 to 100 percent of maximum HP. Red takes priority over orange when thresholds overlap; the overlay is independent. Applies only to GM health indicators, including the mini view.",
     "SCC.NoSheetAccess": "This character sheet is unavailable or you do not have permission to view it.",
     "SCC.PlayersStartedName": "Players: show only after combat starts",
     "SCC.PlayersStartedHint": "Hide the carousel from players until combat starts. The GM controls this setting for all players.",

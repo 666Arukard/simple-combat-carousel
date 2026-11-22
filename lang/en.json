@@ -1,5 +1,9 @@
 {
   "SCC.Order": "Combat order",
+  "SCC.HealthOrange": "Orange health bar at or below (%)",
+  "SCC.HealthRed": "Red health bar at or below (%)",
+  "SCC.HealthOverlay": "Red portrait overlay at or below (%)",
+  "SCC.HealthThresholdHint": "Threshold from 0 to 100 percent of maximum HP. Red takes priority over orange when thresholds overlap; the overlay is independent. Applies only to GM health indicators, including the mini view.",
   "SCC.NoSheetAccess": "This character sheet is unavailable or you do not have permission to view it.",
   "SCC.PlayersStartedName": "Players: show only after combat starts",
   "SCC.PlayersStartedHint": "Hide the carousel from players until combat starts. The GM controls this setting for all players.",

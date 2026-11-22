@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { portraitData, canEndTurn, conditionEffects, healthState, carouselRows, portraitImage } from "../model.js";
+import { portraitData, canEndTurn, conditionEffects, healthState, carouselRows, portraitImage, healthThresholds, hasHealthOverlay } from "../model.js";
 
 function fixture() {
   const player = { id: "player", isGM: false }, gm = { isGM: true };
@@ -51,9 +51,23 @@ test("Zug beenden erfordert aktiven Kampf, aktuellen Teilnehmer und Eigentum ode
 });
 
 test("HP-Grenzen sind inklusive und ohne Rundung", () => {
-  for (const [hp, state] of [[100,"healthy"],[50.01,"healthy"],[50,"bloodied"],[25.01,"bloodied"],[25,"critical"],[10.01,"critical"],[10,"danger"],[0,"danger"]])
+  for (const [hp, state] of [[100,"healthy"],[50.01,"healthy"],[50,"bloodied"],[25.01,"bloodied"],[25,"critical"],[10.01,"critical"],[10,"critical"],[0,"critical"]])
     assert.equal(healthState(hp), state);
   assert.equal(healthState(undefined), undefined);
+});
+
+test("Konfigurierbare HP-Schwellen: inklusive Grenzen, roter Vorrang und unabhängiger Schleier", () => {
+  const thresholds = { orange: 60, red: 30, overlay: 40 };
+  assert.equal(healthState(60, thresholds), "bloodied");
+  assert.equal(healthState(60.01, thresholds), "healthy");
+  assert.equal(healthState(30, thresholds), "critical");
+  assert.equal(healthState(30.01, thresholds), "bloodied");
+  assert.equal(hasHealthOverlay(40, thresholds), true);
+  assert.equal(hasHealthOverlay(40.01, thresholds), false);
+  assert.equal(healthState(35, thresholds), "bloodied");
+  assert.equal(healthState(70, { orange: 20, red: 80 }), "critical");
+  assert.equal(hasHealthOverlay(undefined, thresholds), false);
+  assert.deepEqual(healthThresholds({ orange: -1, red: 200, overlay: NaN }), { orange: 0, red: 100, overlay: 10 });
 });
 
 test("Passive Defense verschwindet, Zustände und temporäre Effekte bleiben", () => {

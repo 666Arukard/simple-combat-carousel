@@ -1,4 +1,4 @@
-import { canEndTurn, carouselRows, healthState } from "./model.js";
+import { canEndTurn, carouselRows, healthState, healthThresholds, hasHealthOverlay } from "./model.js";
 import { t } from "./i18n.js";
 import { contextActions, runContextAction, openCombatantSheet } from "./context-actions.js";
 
@@ -106,6 +106,7 @@ function render() {
   root.style.setProperty("--rsc-size", `${game.settings.get(ID, "portraitSize")}px`);
   const rows = carouselRows(combat, game.user, t, game.settings.get(ID, "playersOnly"), game.settings.get(ID, "imageSource"));
   const showHealth = game.user.isGM && game.settings.get(ID, "showHealthBars");
+  const thresholds = healthThresholds({ orange: game.settings.get(ID, "healthOrange"), red: game.settings.get(ID, "healthRed"), overlay: game.settings.get(ID, "healthOverlay") });
   const collapsed = game.settings.get(ID, "collapsed");
   const toggle = button(root, t(collapsed ? "Expand" : "Collapse"), collapsed ? "▾" : "▴",
     () => game.settings.set(ID, "collapsed", !game.settings.get(ID, "collapsed")));
@@ -122,7 +123,7 @@ function render() {
         image.src = participant.img; image.alt = participant.name;
         frame.append(image);
         bindContextMenu(frame, combat, participant);
-        if (showHealth && healthState(participant.hpPercent) === "danger")
+        if (showHealth && hasHealthOverlay(participant.hpPercent, thresholds))
           frame.append(el("span", "rsc-danger-overlay"));
         slot.append(frame);
       }
@@ -170,7 +171,7 @@ function render() {
     bindContextMenu(card, combat, p);
     card.setAttribute("aria-label", `${p.name}${p.active ? `, ${t("Active")}` : p.next ? `, ${t("Next")}` : ""}`);
     const image = el("img", "rsc-avatar"); image.src = p.img; image.alt = p.name; card.append(image);
-    if (showHealth && healthState(p.hpPercent) === "danger") card.append(el("span", "rsc-danger-overlay"));
+    if (showHealth && hasHealthOverlay(p.hpPercent, thresholds)) card.append(el("span", "rsc-danger-overlay"));
     card.append(el("span", "rsc-init", String(p.initiative)));
     card.append(el("span", "rsc-name", `${p.hidden ? "◌ " : ""}${p.name}`));
     if (p.active || p.next) card.append(el("span", "rsc-order", t(p.active ? "Active" : "Next")));
@@ -182,7 +183,7 @@ function render() {
     card.append(effects);
     if (game.user.isGM && p.ac != null) card.append(el("span", "rsc-ac", t("AC", { value: p.ac })));
     if (showHealth && p.hpPercent !== undefined) {
-      const bar = el("div", `rsc-hp is-${healthState(p.hpPercent)}`); bar.setAttribute("aria-label", t("HP"));
+      const bar = el("div", `rsc-hp is-${healthState(p.hpPercent, thresholds)}`); bar.setAttribute("aria-label", t("HP"));
       const fill = el("span"); fill.style.width = `${p.hpPercent}%`; bar.append(fill); card.append(bar);
     }
     portraits.append(card);
@@ -196,6 +197,8 @@ function schedule() {
   requestAnimationFrame(() => { scheduled = false; render(); });
 }
 Hooks.once("init", () => {
+  for (const [key, name, value] of [["healthOrange", "HealthOrange", 50], ["healthRed", "HealthRed", 25], ["healthOverlay", "HealthOverlay", 10]])
+    game.settings.register(ID, key, { name: t(name), hint: t("HealthThresholdHint"), scope: "world", config: true, restricted: true, type: Number, default: value, range: { min: 0, max: 100, step: 1 }, onChange: schedule });
   game.settings.register(ID, "imageSource", { name: t("ImageSourceName"), hint: t("ImageSourceHint"), scope: "world", config: true, restricted: true, type: String, default: "avatar", choices: { avatar: t("AvatarImage"), token: t("TokenImage") }, onChange: schedule });
   game.settings.register(ID, "onlyStarted", { name: t("PlayersStartedName"), hint: t("PlayersStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: true, onChange: schedule });
   game.settings.register(ID, "gmOnlyStarted", { name: t("GMStartedName"), hint: t("GMStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });

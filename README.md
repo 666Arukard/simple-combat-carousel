@@ -4,6 +4,8 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
+Prepared for 2.1.0: GM world settings configure orange/red health-bar thresholds and the portrait-overlay threshold independently from 0 to 100%. Defaults: 50%, 25%, 10%. Thresholds are inclusive; red wins over orange on overlap. The overlay remains independent. These indicators are still GM-only and follow the health-bar visibility setting.
+
 New in 2.0.0: double-click a portrait to open its character sheet with existing permissions. The GM selects actor portraits (default) or scene token images. Separate world settings control pre-combat visibility for players (hidden by default) and GMs (visible by default). Initiative icons match the Combat Tracker: Roll All (group), Roll NPCs (group with gear).
 
 New in 1.1.1: right-click a portrait (also in mini view) to open Hide/Show, Mark defeated/Remove defeated status (GM only), or Ping token. This uses Foundry's combat-tracker behavior without changing HP. Players can ping visible tokens in the current scene. Anonymous placeholders have no menu. Close with Escape or an outside click; keyboard arrows navigate the menu.
@@ -31,6 +33,8 @@ For a manual installation, extract the `rpg-suite-combat-carousel` directory int
 Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player test of 0.1.4. Version 1.0.0 adds translations and release metadata, validated by automated tests. No maximum version is declared: newer Foundry versions are not blocked, but compatibility with future API changes cannot be guaranteed. The combat display uses Foundry's native Combat API; HP and AC support uses D&D 5e data paths. Other game systems can use the combat order, but their HP and AC values may require adapters.
 
 ## Deutsch
+
+Für 2.1.0 vorbereitet: Drei SL-Welteinstellungen legen Orange-, Rot- und Porträtschleier-Schwellen unabhängig zwischen 0 und 100% fest. Standard: 50%, 25%, 10%. Grenzen gelten einschließlich; Rot hat bei Überschneidungen Vorrang vor Orange. Der Schleier ist unabhängig. Die Hinweise bleiben ausschließlich beim SL sichtbar und folgen der Lebensbalken-Einstellung.
 
 Neu in 2.0.0: Doppelklick auf ein Porträt öffnet den Charakterbogen mit vorhandenen Zugriffsrechten. Der SL wählt Avatar-Bilder (Standard) oder Szenentoken-Bilder. Zwei getrennte Welt-Einstellungen steuern die Sichtbarkeit vor Kampfstart: Spieler standardmäßig ausgeblendet, SL standardmäßig eingeblendet. Initiative-Icons wie im Combat-Reiter: Alle würfeln (Gruppe), NSC würfeln (Gruppe mit Zahnrad).
 

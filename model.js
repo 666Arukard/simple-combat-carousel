@@ -3,9 +3,19 @@ export function canEndTurn(combat, combatant, user) {
     && (user.isGM || combatant?.actor?.testUserPermission(user, "OWNER")));
 }
 
-export function healthState(percent) {
+export function healthThresholds(values = {}) {
+  const normalize = (value, fallback) => Number.isFinite(value) ? Math.max(0, Math.min(100, value)) : fallback;
+  return { orange: normalize(values.orange, 50), red: normalize(values.red, 25), overlay: normalize(values.overlay, 10) };
+}
+
+export function healthState(percent, thresholds) {
   if (!Number.isFinite(percent)) return undefined;
-  return percent <= 10 ? "danger" : percent <= 25 ? "critical" : percent <= 50 ? "bloodied" : "healthy";
+  const { orange, red } = healthThresholds(thresholds);
+  return percent <= red ? "critical" : percent <= orange ? "bloodied" : "healthy";
+}
+
+export function hasHealthOverlay(percent, thresholds) {
+  return Number.isFinite(percent) && percent <= healthThresholds(thresholds).overlay;
 }
 
 export function conditionEffects(actor) {
