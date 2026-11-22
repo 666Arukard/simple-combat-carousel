@@ -1,5 +1,5 @@
 import { canEndTurn, carouselRows, healthState, healthThresholds, hasHealthOverlay } from "./model.js";
-import { t } from "./i18n.js";
+import { t, localizeModuleSettings } from "./i18n.js";
 import { contextActions, runContextAction, openCombatantSheet, portraitMenuOptions, addPortraitMenuEntries } from "./context-actions.js";
 
 const ID = "rpg-suite-combat-carousel";
@@ -200,19 +200,22 @@ function schedule() {
   requestAnimationFrame(() => { scheduled = false; render(); });
 }
 Hooks.once("init", () => {
+  // Register language before translating any other setting: get() now sees the saved override.
+  game.settings.register(ID, "language", { name: t("LanguageName"), hint: t("LanguageHint"), scope: "client", config: true, type: String, default: "auto", choices: { auto: t("Automatic"), de: "Deutsch", en: "English" }, requiresReload: true, onChange: () => { localizeModuleSettings(game); schedule(); } });
   for (const [key, name, value] of [["healthOrange", "HealthOrange", 50], ["healthRed", "HealthRed", 25], ["healthOverlay", "HealthOverlay", 10]])
     game.settings.register(ID, key, { name: t(name), hint: t("HealthThresholdHint"), scope: "world", config: true, restricted: true, type: Number, default: value, range: { min: 0, max: 100, step: 1 }, onChange: schedule });
   game.settings.register(ID, "imageSource", { name: t("ImageSourceName"), hint: t("ImageSourceHint"), scope: "world", config: true, restricted: true, type: String, default: "avatar", choices: { avatar: t("AvatarImage"), token: t("TokenImage") }, onChange: schedule });
   game.settings.register(ID, "onlyStarted", { name: t("PlayersStartedName"), hint: t("PlayersStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: true, onChange: schedule });
   game.settings.register(ID, "gmOnlyStarted", { name: t("GMStartedName"), hint: t("GMStartedHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "playersOnly", { name: t("PlayersOnlyName"), hint: t("PlayersOnlyHint"), scope: "world", config: true, restricted: true, type: Boolean, default: false, onChange: schedule });
-  game.settings.register(ID, "language", { name: t("LanguageName"), hint: t("LanguageHint"), scope: "client", config: true, type: String, default: "auto", choices: { auto: t("Automatic"), de: "Deutsch", en: "English" }, requiresReload: true, onChange: schedule });
   game.settings.register(ID, "collapsed", { name: t("CollapsedName"), hint: t("CollapsedHint"), scope: "client", config: true, type: Boolean, default: false, onChange: schedule });
   game.settings.register(ID, "showHealthBars", { name: t("HealthName"), hint: t("HealthHint"), scope: "client", config: true, type: Boolean, default: true, onChange: schedule });
   game.settings.register(ID, "enabled", { name: t("EnabledName"), scope: "client", config: true, type: Boolean, default: true, onChange: schedule });
   game.settings.register(ID, "portraitSize", { name: t("SizeName"), scope: "client", config: true, type: Number, default: 88, range: { min: 56, max: 144, step: 8 }, onChange: schedule });
+  localizeModuleSettings(game);
 });
 Hooks.once("ready", () => {
+  localizeModuleSettings(game);
   Hooks.on("getCombatantContextOptions", (application, entries) => addPortraitMenuEntries(application, entries, {
     game, translate: t, onError: error => { console.error(ID, error); ui.notifications.error(t("ActionFailed")); }
   }));

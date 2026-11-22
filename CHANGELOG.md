@@ -1,3 +1,10 @@
+# Simple Combat Carousel 2.1.1
+
+Prepared / Vorbereitet: 2026-11-22. Not yet released / Noch nicht veröffentlicht.
+
+- Fix mixed-language settings when the module language differs from the Foundry language. All labels, hints and image-source choices now use the saved module language.
+- Behebt gemischtsprachige Einstellungen bei abweichender Foundry-Sprache. Alle Beschriftungen, Hinweise und Bildquellen-Auswahlen verwenden die gespeicherte Modulsprache.
+
 # Simple Combat Carousel 2.1.0
 
 Released / Veröffentlicht: 2026-11-22.

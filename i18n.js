@@ -19,3 +19,29 @@ export function t(key, values) {
   try { selected = game.settings.get(MODULE_ID, "language"); } catch { /* use Foundry */ }
   return translate(key, values, selected, game.i18n?.lang);
 }
+
+export function localizeModuleSettings(currentGame) {
+  const selected = currentGame.settings.get(MODULE_ID, "language");
+  const text = key => translate(key, {}, selected, currentGame.i18n?.lang);
+  const labels = {
+    language: ["LanguageName", "LanguageHint"],
+    healthOrange: ["HealthOrange", "HealthThresholdHint"],
+    healthRed: ["HealthRed", "HealthThresholdHint"],
+    healthOverlay: ["HealthOverlay", "HealthThresholdHint"],
+    imageSource: ["ImageSourceName", "ImageSourceHint"],
+    onlyStarted: ["PlayersStartedName", "PlayersStartedHint"],
+    gmOnlyStarted: ["GMStartedName", "GMStartedHint"],
+    playersOnly: ["PlayersOnlyName", "PlayersOnlyHint"],
+    collapsed: ["CollapsedName", "CollapsedHint"],
+    showHealthBars: ["HealthName", "HealthHint"],
+    enabled: ["EnabledName"], portraitSize: ["SizeName"]
+  };
+  for (const [key, [name, hint]] of Object.entries(labels)) {
+    const config = currentGame.settings.settings?.get(`${MODULE_ID}.${key}`);
+    if (!config) continue;
+    config.name = text(name);
+    if (hint) config.hint = text(hint);
+    if (key === "language") config.choices = { auto: text("Automatic"), de: "Deutsch", en: "English" };
+    if (key === "imageSource") config.choices = { avatar: text("AvatarImage"), token: text("TokenImage") };
+  }
+}
