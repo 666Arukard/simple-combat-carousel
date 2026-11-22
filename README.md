@@ -4,9 +4,9 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
-Prepared for 2.1.0: GM right-click menus in the Combat Tracker and carousel provide per-combatant **global / actor portrait / token image** selection and a **highlight toggle**. Highlighted portraits receive a purple outline and star, independent of active/next-turn borders. Applies in full and mini views, persists with the combatant, and does not change actor/token images. Select global again to restore the world default. Hidden combatants and anonymous PC-only placeholders retain their existing privacy behavior.
+New in 2.1.0: GM right-click menus in the Combat Tracker and carousel provide per-combatant **global / actor portrait / token image** selection and a **highlight toggle**. Highlighted portraits receive a purple outline and star, independent of active/next-turn borders. Applies in full and mini views, persists with the combatant, and does not change actor/token images. Select global again to restore the world default. Hidden combatants and anonymous PC-only placeholders retain their existing privacy behavior.
 
-Prepared for 2.1.0: GM world settings configure orange/red health-bar thresholds and the portrait-overlay threshold independently from 0 to 100%. Defaults: 50%, 25%, 10%. Thresholds are inclusive; red wins over orange on overlap. The overlay remains independent. These indicators are still GM-only and follow the health-bar visibility setting.
+New in 2.1.0: GM world settings configure orange/red health-bar thresholds and the portrait-overlay threshold independently from 0 to 100%. Defaults: 50%, 25%, 10%. Thresholds are inclusive; red wins over orange on overlap. The overlay remains independent. These indicators are still GM-only and follow the health-bar visibility setting.
 
 New in 2.0.0: double-click a portrait to open its character sheet with existing permissions. The GM selects actor portraits (default) or scene token images. Separate world settings control pre-combat visibility for players (hidden by default) and GMs (visible by default). Initiative icons match the Combat Tracker: Roll All (group), Roll NPCs (group with gear).
 
@@ -36,9 +36,9 @@ Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player t
 
 ## Deutsch
 
-Für 2.1.0 vorbereitet: Im SL-Rechtsklick-Menü des Combat-Reiters und Carousels stehen pro Teilnehmer **globale Vorgabe / Avatar-Bild / Token-Bild** sowie **Hervorhebung umschalten** bereit. Eine violette Umrandung und ein Stern markieren wichtige Teilnehmer, unabhängig vom aktiven/nächsten Zug. Gilt auch minimiert, wird am Kampfteilnehmer gespeichert und verändert keine Actor-/Tokenbilder. „Globale Bildquelle“ setzt die individuelle Auswahl zurück. Versteckte Teilnehmer und anonyme SC-Platzhalter bleiben geschützt.
+Neu in 2.1.0: Im SL-Rechtsklick-Menü des Combat-Reiters und Carousels stehen pro Teilnehmer **globale Vorgabe / Avatar-Bild / Token-Bild** sowie **Hervorhebung umschalten** bereit. Eine violette Umrandung und ein Stern markieren wichtige Teilnehmer, unabhängig vom aktiven/nächsten Zug. Gilt auch minimiert, wird am Kampfteilnehmer gespeichert und verändert keine Actor-/Tokenbilder. „Globale Bildquelle“ setzt die individuelle Auswahl zurück. Versteckte Teilnehmer und anonyme SC-Platzhalter bleiben geschützt.
 
-Für 2.1.0 vorbereitet: Drei SL-Welteinstellungen legen Orange-, Rot- und Porträtschleier-Schwellen unabhängig zwischen 0 und 100% fest. Standard: 50%, 25%, 10%. Grenzen gelten einschließlich; Rot hat bei Überschneidungen Vorrang vor Orange. Der Schleier ist unabhängig. Die Hinweise bleiben ausschließlich beim SL sichtbar und folgen der Lebensbalken-Einstellung.
+Neu in 2.1.0: Drei SL-Welteinstellungen legen Orange-, Rot- und Porträtschleier-Schwellen unabhängig zwischen 0 und 100% fest. Standard: 50%, 25%, 10%. Grenzen gelten einschließlich; Rot hat bei Überschneidungen Vorrang vor Orange. Der Schleier ist unabhängig. Die Hinweise bleiben ausschließlich beim SL sichtbar und folgen der Lebensbalken-Einstellung.
 
 Neu in 2.0.0: Doppelklick auf ein Porträt öffnet den Charakterbogen mit vorhandenen Zugriffsrechten. Der SL wählt Avatar-Bilder (Standard) oder Szenentoken-Bilder. Zwei getrennte Welt-Einstellungen steuern die Sichtbarkeit vor Kampfstart: Spieler standardmäßig ausgeblendet, SL standardmäßig eingeblendet. Initiative-Icons wie im Combat-Reiter: Alle würfeln (Gruppe), NSC würfeln (Gruppe mit Zahnrad).
 
@@ -61,6 +61,7 @@ Die oben genannte Manifest-Adresse unter **Modul installieren → Manifest-URL**
 Die Angabe **verified: 14.370** beruht auf Daniels bestätigtem Praxistest von 0.1.4 mit Spielleiter- und Spieleransicht. Die Übersetzungen und Release-Dateien von 1.0.0 wurden zusätzlich automatisiert geprüft. Keine Versionsobergrenze; spätere Foundry-Versionen werden nicht pauschal gesperrt, sind aber noch nicht praktisch abgenommen. HP/RK verwenden D&D-5e-Wertepfade.
 
 Eigenständige Implementierung mit KI-Unterstützung durch ChatGPT/Codex. Carousel Combat Tracker diente als Funktionsreferenz, ohne Codeübernahme oder Laufzeitabhängigkeit. Eine spätere optionale Integration in die RPG Suite ist geplant. Weitere Ideen stehen in [ROADMAP.md](ROADMAP.md), noch ohne Implementierung.
+
 
 
 

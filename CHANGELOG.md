@@ -1,6 +1,6 @@
 # Simple Combat Carousel 2.1.0
 
-Unreleased / Noch nicht veröffentlicht.
+Released / Veröffentlicht: 2026-11-22.
 
 - Per-combatant actor/token/global image source and optional purple highlight with star, in full and mini views. Configured by GM via right-click in Combat Tracker or carousel. Stored only on the combatant, not the actor or token image.
 - Individuelle Bildquelle Avatar/Token/globale Vorgabe und optionale violette Hervorhebung mit Stern in Groß- und Miniansicht. SL-Rechtsklick im Combat-Reiter oder Carousel. Speicherung nur am Kampfteilnehmer; Actor- und Tokenbilder bleiben unverändert.
@@ -82,5 +82,6 @@ Released / Veröffentlicht: 2026-11-21.
 - Stabile GitHub-Manifest-Adresse für Foundry-Installation und Updates.
 - Prüfziel 14.370 auf Grundlage des erfolgreichen SL-/Spielertests von 0.1.4 durch den Autor; Übersetzungen/Release-Dateien automatisiert geprüft. Keine Versionsobergrenze.
 - Technische Modul-ID bleibt zum Erhalt der Prototyp-Einstellungen bestehen.
+
 
 
