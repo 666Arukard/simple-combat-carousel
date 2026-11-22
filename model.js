@@ -29,7 +29,10 @@ export function portraitPreferences(combatant) {
   const flags = combatant?.flags?.["rpg-suite-combat-carousel"] ?? {};
   const source = combatant?.getFlag?.("rpg-suite-combat-carousel", "imageSource") ?? flags.imageSource;
   const featured = combatant?.getFlag?.("rpg-suite-combat-carousel", "featured") ?? flags.featured;
-  return { source: ["avatar", "token"].includes(source) ? source : "default", featured: featured === true };
+  const savedFrame = combatant?.getFlag?.("rpg-suite-combat-carousel", "frameStyle") ?? flags.frameStyle;
+  const frame = ["none", "ornate", "ally", "enemy", "boss"].includes(savedFrame)
+    ? savedFrame : featured === true ? "ornate" : "none";
+  return { source: ["avatar", "token"].includes(source) ? source : "default", featured: frame !== "none", frame };
 }
 
 export function portraitImage(combatant, source = "avatar") {
@@ -54,6 +57,7 @@ export function portraitData(combat, user, translate = key => ({ Unknown: "Unbek
       roundBreak: index > 0 && turns.indexOf(c) < turns.indexOf(ordered[index - 1]),
       defeated: c.isDefeated, hidden: c.hidden,
       featured: portraitPreferences(c).featured,
+      frame: portraitPreferences(c).frame,
       effects: conditionEffects(actor)
         .map(e => ({ img: e.img || "icons/svg/aura.svg", name: e.name ?? translate("Condition") }))
     };

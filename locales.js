@@ -59,7 +59,12 @@ export const catalogs = {
     "SCC.HealthName": "Lebensbalken für den SL anzeigen",
     "SCC.HealthHint": "Zeigt Lebensbalken ausschließlich beim Spielleiter. Spieler sehen weiterhin keine Lebenspunkte.",
     "SCC.EnabledName": "Carousel anzeigen",
-    "SCC.SizeName": "Porträtgröße"
+    "SCC.SizeName": "Porträtgröße",
+    "SCC.FrameNone": "Rahmen: Keiner",
+    "SCC.FrameOrnate": "Rahmen: Arkan (verziert)",
+    "SCC.FrameAlly": "Rahmen: Verbündeter (grün)",
+    "SCC.FrameEnemy": "Rahmen: Gegner (rot)",
+    "SCC.FrameBoss": "Rahmen: Boss (Rot und Gold)"
   },
   "en": {
     "SCC.Order": "Combat order",
@@ -120,6 +125,11 @@ export const catalogs = {
     "SCC.HealthName": "Show GM health bars",
     "SCC.HealthHint": "Show health bars to the GM only. Players never see hit points in the carousel.",
     "SCC.EnabledName": "Show carousel",
-    "SCC.SizeName": "Portrait size"
+    "SCC.SizeName": "Portrait size",
+    "SCC.FrameNone": "Frame: None",
+    "SCC.FrameOrnate": "Frame: Arcane (ornate)",
+    "SCC.FrameAlly": "Frame: Ally (green)",
+    "SCC.FrameEnemy": "Frame: Enemy (red)",
+    "SCC.FrameBoss": "Frame: Boss (red and gold)"
   }
 };

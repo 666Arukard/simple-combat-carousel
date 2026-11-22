@@ -115,7 +115,7 @@ test("Steuerung liegt außerhalb der Avatare; SL-Balken sind abschaltbar", async
   const contextEvent = { preventDefault() {}, stopPropagation() {}, clientX: 1199, clientY: 799 };
   find("rsc-compact-frame")[0].contextmenu(contextEvent);
   let menu = document.body.children.find(c => c.className === "rsc-context-menu");
-  assert.equal(menu.querySelectorAll("button").length, 7);
+  assert.equal(menu.querySelectorAll("button").length, 11);
   assert.equal(menu.style.left, "996px");
   await menu.querySelectorAll("button")[0].click({ stopPropagation() {} });
   assert.equal(hiddenToggles, 1);
@@ -123,11 +123,13 @@ test("Steuerung liegt außerhalb der Avatare; SL-Balken sind abschaltbar", async
   c.setFlag = async (scope, key, value) => { c.flags ??= {}; c.flags[scope] ??= {}; c.flags[scope][key] = value; };
   find("rsc-compact-frame")[0].contextmenu(contextEvent);
   menu = document.body.children.find(c => c.className === "rsc-context-menu");
-  await menu.querySelectorAll("button")[6].click({ stopPropagation() {} });
-  assert.equal(find("rsc-feature-star").length, 1);
+  await menu.querySelectorAll("button")[9].click({ stopPropagation() {} });
+  assert.equal(find("rsc-feature-star").length, 0);
+    assert.equal(find("rsc-frame-enemy").length, 1);
   assert.equal(find("is-featured").length, 1);
   await game.settings.set("rpg-suite-combat-carousel", "collapsed", false);
-  assert.equal(find("rsc-feature-star").length, 1);
+  assert.equal(find("rsc-feature-star").length, 0);
+    assert.equal(find("rsc-frame-enemy").length, 1);
   assert.equal(find("rsc-card")[0].className.includes("is-active"), true);
   game.user.isGM = false;
   settings.get("collapsed").onChange();
