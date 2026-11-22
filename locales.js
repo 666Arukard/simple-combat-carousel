@@ -2,6 +2,11 @@
 export const catalogs = {
   "de": {
     "SCC.Order": "Kampfreihenfolge",
+    "SCC.SourceDefault": "Carousel: globale Bildquelle verwenden",
+    "SCC.SourceAvatar": "Carousel: Avatar-Bild verwenden",
+    "SCC.SourceToken": "Carousel: Token-Bild verwenden",
+    "SCC.Feature": "Carousel: Hervorhebung umschalten",
+    "SCC.Unfeature": "Carousel: Hervorhebung entfernen",
     "SCC.HealthOrange": "Lebensbalken orange bis einschließlich (%)",
     "SCC.HealthRed": "Lebensbalken rot bis einschließlich (%)",
     "SCC.HealthOverlay": "Roter Porträtschleier bis einschließlich (%)",
@@ -58,6 +63,11 @@ export const catalogs = {
   },
   "en": {
     "SCC.Order": "Combat order",
+    "SCC.SourceDefault": "Carousel: use global image source",
+    "SCC.SourceAvatar": "Carousel: use actor portrait",
+    "SCC.SourceToken": "Carousel: use token image",
+    "SCC.Feature": "Carousel: toggle highlight",
+    "SCC.Unfeature": "Carousel: remove highlight",
     "SCC.HealthOrange": "Orange health bar at or below (%)",
     "SCC.HealthRed": "Red health bar at or below (%)",
     "SCC.HealthOverlay": "Red portrait overlay at or below (%)",

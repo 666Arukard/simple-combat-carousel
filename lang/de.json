@@ -1,5 +1,10 @@
 {
   "SCC.Order": "Kampfreihenfolge",
+  "SCC.SourceDefault": "Carousel: globale Bildquelle verwenden",
+  "SCC.SourceAvatar": "Carousel: Avatar-Bild verwenden",
+  "SCC.SourceToken": "Carousel: Token-Bild verwenden",
+  "SCC.Feature": "Carousel: Hervorhebung umschalten",
+  "SCC.Unfeature": "Carousel: Hervorhebung entfernen",
   "SCC.HealthOrange": "Lebensbalken orange bis einschließlich (%)",
   "SCC.HealthRed": "Lebensbalken rot bis einschließlich (%)",
   "SCC.HealthOverlay": "Roter Porträtschleier bis einschließlich (%)",

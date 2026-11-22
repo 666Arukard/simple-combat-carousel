@@ -4,6 +4,8 @@ By **Daniel Brune** · [Website](https://dnd.brunecoaching.de) · Discord: `aruk
 
 ## English
 
+Prepared for 2.1.0: GM right-click menus in the Combat Tracker and carousel provide per-combatant **global / actor portrait / token image** selection and a **highlight toggle**. Highlighted portraits receive a purple outline and star, independent of active/next-turn borders. Applies in full and mini views, persists with the combatant, and does not change actor/token images. Select global again to restore the world default. Hidden combatants and anonymous PC-only placeholders retain their existing privacy behavior.
+
 Prepared for 2.1.0: GM world settings configure orange/red health-bar thresholds and the portrait-overlay threshold independently from 0 to 100%. Defaults: 50%, 25%, 10%. Thresholds are inclusive; red wins over orange on overlap. The overlay remains independent. These indicators are still GM-only and follow the health-bar visibility setting.
 
 New in 2.0.0: double-click a portrait to open its character sheet with existing permissions. The GM selects actor portraits (default) or scene token images. Separate world settings control pre-combat visibility for players (hidden by default) and GMs (visible by default). Initiative icons match the Combat Tracker: Roll All (group), Roll NPCs (group with gear).
@@ -33,6 +35,8 @@ For a manual installation, extract the `rpg-suite-combat-carousel` directory int
 Foundry VTT 14, verified for **14.370** based on Daniel's successful GM/player test of 0.1.4. Version 1.0.0 adds translations and release metadata, validated by automated tests. No maximum version is declared: newer Foundry versions are not blocked, but compatibility with future API changes cannot be guaranteed. The combat display uses Foundry's native Combat API; HP and AC support uses D&D 5e data paths. Other game systems can use the combat order, but their HP and AC values may require adapters.
 
 ## Deutsch
+
+Für 2.1.0 vorbereitet: Im SL-Rechtsklick-Menü des Combat-Reiters und Carousels stehen pro Teilnehmer **globale Vorgabe / Avatar-Bild / Token-Bild** sowie **Hervorhebung umschalten** bereit. Eine violette Umrandung und ein Stern markieren wichtige Teilnehmer, unabhängig vom aktiven/nächsten Zug. Gilt auch minimiert, wird am Kampfteilnehmer gespeichert und verändert keine Actor-/Tokenbilder. „Globale Bildquelle“ setzt die individuelle Auswahl zurück. Versteckte Teilnehmer und anonyme SC-Platzhalter bleiben geschützt.
 
 Für 2.1.0 vorbereitet: Drei SL-Welteinstellungen legen Orange-, Rot- und Porträtschleier-Schwellen unabhängig zwischen 0 und 100% fest. Standard: 50%, 25%, 10%. Grenzen gelten einschließlich; Rot hat bei Überschneidungen Vorrang vor Orange. Der Schleier ist unabhängig. Die Hinweise bleiben ausschließlich beim SL sichtbar und folgen der Lebensbalken-Einstellung.
 

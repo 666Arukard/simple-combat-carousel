@@ -2,6 +2,9 @@
 
 Unreleased / Noch nicht veröffentlicht.
 
+- Per-combatant actor/token/global image source and optional purple highlight with star, in full and mini views. Configured by GM via right-click in Combat Tracker or carousel. Stored only on the combatant, not the actor or token image.
+- Individuelle Bildquelle Avatar/Token/globale Vorgabe und optionale violette Hervorhebung mit Stern in Groß- und Miniansicht. SL-Rechtsklick im Combat-Reiter oder Carousel. Speicherung nur am Kampfteilnehmer; Actor- und Tokenbilder bleiben unverändert.
+
 - Three GM-only world settings independently configure the orange health bar, red health bar and red portrait-overlay thresholds (0–100%). Defaults remain 50%, 25%, 10%.
 - Inclusive boundaries; red takes priority over orange on overlap. The overlay threshold does not change the bar color. Full/mini views and GM-only health visibility are preserved.
 - Drei SL-Welteinstellungen für die Schwellen von orangem Balken, rotem Balken und rotem Porträtschleier (0–100%). Standard bleibt 50%, 25%, 10%.

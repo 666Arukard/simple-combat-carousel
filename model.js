@@ -25,7 +25,16 @@ export function conditionEffects(actor) {
     && (e.isTemporary || (e.statuses?.size ?? e.statuses?.length ?? 0) > 0));
 }
 
+export function portraitPreferences(combatant) {
+  const flags = combatant?.flags?.["rpg-suite-combat-carousel"] ?? {};
+  const source = combatant?.getFlag?.("rpg-suite-combat-carousel", "imageSource") ?? flags.imageSource;
+  const featured = combatant?.getFlag?.("rpg-suite-combat-carousel", "featured") ?? flags.featured;
+  return { source: ["avatar", "token"].includes(source) ? source : "default", featured: featured === true };
+}
+
 export function portraitImage(combatant, source = "avatar") {
+  const preference = portraitPreferences(combatant).source;
+  if (preference !== "default") source = preference;
   const avatar = combatant.actor?.img;
   const token = combatant.token?.texture?.src || combatant.img;
   return (source === "token" ? token || avatar : avatar || token) || "icons/svg/mystery-man.svg";
@@ -44,6 +53,7 @@ export function portraitData(combat, user, translate = key => ({ Unknown: "Unbek
       next: combat.started && c.id === combat.nextCombatant?.id,
       roundBreak: index > 0 && turns.indexOf(c) < turns.indexOf(ordered[index - 1]),
       defeated: c.isDefeated, hidden: c.hidden,
+      featured: portraitPreferences(c).featured,
       effects: conditionEffects(actor)
         .map(e => ({ img: e.img || "icons/svg/aura.svg", name: e.name ?? translate("Condition") }))
     };

@@ -1,5 +1,7 @@
 # Verification record
 
+- 2026-11-22: Daniel confirmed all suggested 2.0.0 practical checks (double-click sheets, image source, separate start visibility, turn progression, context menu and initiative buttons). Individual portrait overrides and configurable HP thresholds are new for unreleased 2.1.0 and need a final live check.
+
 - 2026-11-21: Daniel confirmed successful GM and player testing of 0.1.4 on Foundry VTT 14.370.
 - 1.0.0: Combat behavior retained; German/English translations, settings, branding and distribution metadata added.
 - Automated tests cover ownership and active-turn checks, GM-only HP/AC, hidden combatants, turn order, mini-view collapse/expand, mini-view end-turn authorization, language switching, locale completeness and synchronized catalogs.
