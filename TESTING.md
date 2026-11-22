@@ -13,3 +13,5 @@
 On Foundry 14.370, open GM and player clients, select English and German independently, reload, and check settings labels, tooltips, expanded/mini views and end-turn buttons. Character and effect names remain world data. Confirm no HP/AC appear for players; toggle the GM health bars. Try a normal Foundry update using the stable manifest URL.
 
 - 2026-11-22: Prepared 2.2.0: 20 Node tests pass, including frame persistence, legacy highlight fallback, player permission denial and full/mini enemy frame rendering. Live visual verification pending: choose all four frames, mark multiple enemies and a boss, change turns, collapse/expand, remove a legacy highlight and check HP/initiative/effect readability.
+
+- 2026-11-22: Daniel confirmed successful practical tests of the 2.2.0 portrait frames and authorized release.

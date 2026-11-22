@@ -1,12 +1,14 @@
 # Simple Combat Carousel 2.2.0
 
-Prepared / Vorbereitet: 2026-11-22. Not yet released / Noch nicht veröffentlicht.
+Released / Veröffentlicht: 2026-11-22.
 
 - Individuelle Zierrahmen: Arkan, Verbündeter, Gegner und Boss sowie kein Rahmen. SL-Auswahl per Rechtsklick im Carousel oder Combat-Reiter. Mehrere Teilnehmer unabhängig markierbar; Groß- und Miniansicht. Frühere Hervorhebungen werden als arkaner Rahmen angezeigt, ohne Stern.
 - Per-combatant ornate frames: Arcane, Ally, Enemy, Boss and None. GM right-click selection in the carousel and Combat Tracker. Supports multiple marked participants and both views; existing highlights use the arcane frame without a star.
-- Includes the settings language fix prepared for 2.1.1 below.
+- Includes the settings language fix released in 2.1.1.
 
- / Veröffentlicht: 2026-11-22.
+# Simple Combat Carousel 2.1.1
+
+Released / Veröffentlicht: 2026-11-22.
 
 - Fix mixed-language settings when the module language differs from the Foundry language. All labels, hints and image-source choices now use the saved module language.
 - Behebt gemischtsprachige Einstellungen bei abweichender Foundry-Sprache. Alle Beschriftungen, Hinweise und Bildquellen-Auswahlen verwenden die gespeicherte Modulsprache.
@@ -95,7 +97,6 @@ Released / Veröffentlicht: 2026-11-21.
 - Stabile GitHub-Manifest-Adresse für Foundry-Installation und Updates.
 - Prüfziel 14.370 auf Grundlage des erfolgreichen SL-/Spielertests von 0.1.4 durch den Autor; Übersetzungen/Release-Dateien automatisiert geprüft. Keine Versionsobergrenze.
 - Technische Modul-ID bleibt zum Erhalt der Prototyp-Einstellungen bestehen.
-
 
 
 
