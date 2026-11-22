@@ -57,10 +57,5 @@
   "SCC.HealthName": "Lebensbalken für den SL anzeigen",
   "SCC.HealthHint": "Zeigt Lebensbalken ausschließlich beim Spielleiter. Spieler sehen weiterhin keine Lebenspunkte.",
   "SCC.EnabledName": "Carousel anzeigen",
-  "SCC.SizeName": "Porträtgröße",
-  "SCC.FrameNone": "Rahmen: Keiner",
-  "SCC.FrameOrnate": "Rahmen: Arkan (verziert)",
-  "SCC.FrameAlly": "Rahmen: Verbündeter (grün)",
-  "SCC.FrameEnemy": "Rahmen: Gegner (rot)",
-  "SCC.FrameBoss": "Rahmen: Boss (Rot und Gold)"
+  "SCC.SizeName": "Porträtgröße"
 }

@@ -1,7 +1,6 @@
 import { portraitPreferences } from "./model.js";
 
-export const FRAME_ACTIONS = { frameNone: "none", frameOrnate: "ornate", frameAlly: "ally", frameEnemy: "enemy", frameBoss: "boss" };
-export const PORTRAIT_ACTIONS = ["sourceDefault", "sourceAvatar", "sourceToken", ...Object.keys(FRAME_ACTIONS)];
+export const PORTRAIT_ACTIONS = ["sourceDefault", "sourceAvatar", "sourceToken", "featured"];
 
 export function portraitMenuOptions(combatant) {
   const preferences = portraitPreferences(combatant);
@@ -9,8 +8,7 @@ export function portraitMenuOptions(combatant) {
     sourceDefault: ["SourceDefault", "fa-solid fa-rotate-left", preferences.source === "default"],
     sourceAvatar: ["SourceAvatar", "fa-solid fa-user", preferences.source === "avatar"],
     sourceToken: ["SourceToken", "fa-solid fa-circle-user", preferences.source === "token"],
-    ...Object.fromEntries(Object.entries(FRAME_ACTIONS).map(([action, frame]) =>
-      [action, [action[0].toUpperCase() + action.slice(1), frame === "boss" ? "fa-solid fa-crown" : "fa-solid fa-image", preferences.frame === frame]]))
+    featured: [preferences.featured ? "Unfeature" : "Feature", "fa-solid fa-star", preferences.featured]
   };
 }
 
@@ -34,12 +32,10 @@ export function addPortraitMenuEntries(application, menuItems, { game, translate
 }
 
 export async function applyPortraitAction(action, combatant, user) {
-  if (!user.isGM || !combatant || ![...PORTRAIT_ACTIONS, "featured"].includes(action)) return false;
+  if (!user.isGM || !combatant || !PORTRAIT_ACTIONS.includes(action)) return false;
   const scope = "rpg-suite-combat-carousel";
   if (action === "featured")
-    await combatant.setFlag(scope, "frameStyle", portraitPreferences(combatant).featured ? "none" : "ornate");
-  else if (Object.hasOwn(FRAME_ACTIONS, action))
-    await combatant.setFlag(scope, "frameStyle", FRAME_ACTIONS[action]);
+    await combatant.setFlag(scope, "featured", !portraitPreferences(combatant).featured);
   else
     await combatant.setFlag(scope, "imageSource", { sourceDefault: "default", sourceAvatar: "avatar", sourceToken: "token" }[action]);
   return true;

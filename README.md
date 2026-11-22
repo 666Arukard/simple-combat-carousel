@@ -66,9 +66,3 @@ Eigenständige Implementierung mit KI-Unterstützung durch ChatGPT/Codex. Carous
 
 
 
-
-## Individuelle Rahmen / Individual frames
-
-SL: Rechtsklick auf ein Porträt im Carousel oder Combat-Reiter → Rahmen wählen. Arkan (violette Ornamente), Verbündeter (grün), Gegner (rot), Boss (Rot/Gold mit Spitzen), Keiner. Jeder Kampfteilnehmer kann unabhängig markiert werden. Die Auswahl gilt auch in der Miniansicht und ersetzt den bisherigen Stern. Der aktuelle Zug bleibt durch Größe und goldene Zugmarkierung erkennbar.
-
-GM: Right-click a portrait in the carousel or Combat Tracker and choose a frame. Arcane, Ally, Enemy, Boss or None. Choices are independent per combatant, appear in both views and replace the old star.

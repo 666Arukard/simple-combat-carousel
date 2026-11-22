@@ -119,10 +119,11 @@ function render() {
     for (const [label, participant] of [[t("Active"), rows.find(p => p.active)], [t("Next"), rows.find(p => p.next)]]) {
       const slot = el("div", "rsc-compact-participant");
       if (participant) {
-        const frame = el("span", `rsc-compact-frame${participant.featured ? " is-featured rsc-frame-" + participant.frame : ""}`);
+        const frame = el("span", `rsc-compact-frame${participant.featured ? " is-featured" : ""}`);
         const image = el("img", "rsc-compact-avatar");
         image.src = participant.img; image.alt = participant.name;
         frame.append(image);
+        if (participant.featured) frame.append(el("span", "rsc-feature-star", "★"));
         bindContextMenu(frame, combat, participant);
         if (showHealth && hasHealthOverlay(participant.hpPercent, thresholds))
           frame.append(el("span", "rsc-danger-overlay"));
@@ -168,10 +169,11 @@ function render() {
   const portraits = el("div", "rsc-portraits");
   for (const p of rows) {
     if (p.roundBreak) portraits.append(el("span", "rsc-break", "↻"));
-    const card = el("article", `rsc-card${p.active ? " is-active" : ""}${p.next ? " is-next" : ""}${p.defeated ? " is-defeated" : ""}${p.featured ? " is-featured rsc-frame-" + p.frame : ""}`);
+    const card = el("article", `rsc-card${p.active ? " is-active" : ""}${p.next ? " is-next" : ""}${p.defeated ? " is-defeated" : ""}${p.featured ? " is-featured" : ""}`);
     bindContextMenu(card, combat, p);
     card.setAttribute("aria-label", `${p.name}${p.active ? `, ${t("Active")}` : p.next ? `, ${t("Next")}` : ""}`);
     const image = el("img", "rsc-avatar"); image.src = p.img; image.alt = p.name; card.append(image);
+    if (p.featured) card.append(el("span", "rsc-feature-star", "★"));
     if (showHealth && hasHealthOverlay(p.hpPercent, thresholds)) card.append(el("span", "rsc-danger-overlay"));
     card.append(el("span", "rsc-init", String(p.initiative)));
     card.append(el("span", "rsc-name", `${p.hidden ? "◌ " : ""}${p.name}`));
