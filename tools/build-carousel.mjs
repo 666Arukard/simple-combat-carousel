@@ -13,7 +13,7 @@ assert.equal(manifest.version, pkg.version);
 assert.equal(manifest.title, "Simple Combat Carousel");
 assert.equal(manifest.id, "rpg-suite-combat-carousel");
 assert.equal(manifest.authors[0].name, "Daniel Brune");
-assert.equal(manifest.compatibility.verified, "14.370");
+assert.equal(manifest.compatibility.verified, "14.371");
 assert.equal(manifest.compatibility.maximum, undefined);
 const base = "https://github.com/666Arukard/simple-combat-carousel";
 assert.equal(manifest.url, "https://foundryvtt.com/packages/rpg-suite-combat-carousel/");

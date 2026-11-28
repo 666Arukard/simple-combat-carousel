@@ -15,3 +15,5 @@ On Foundry 14.370, open GM and player clients, select English and German indepen
 - 2026-11-22: Prepared 2.2.0: 20 Node tests pass, including frame persistence, legacy highlight fallback, player permission denial and full/mini enemy frame rendering. Live visual verification pending: choose all four frames, mark multiple enemies and a boss, change turns, collapse/expand, remove a legacy highlight and check HP/initiative/effect readability.
 
 - 2026-11-22: Daniel confirmed successful practical tests of the 2.2.0 portrait frames and authorized release.
+
+- 2026-11-28: 2.2.1 compatibility-only release for Foundry 14.371 and D&D 5e 6.1.2. Reviewed official release notes: no identified impact on used combat, actor HP/AC, condition, portrait or context-menu interfaces. Manifest verified target updated to 14.371 on static review; automated tests run. No live test under these new versions was performed. Runtime files unchanged from 2.2.0.

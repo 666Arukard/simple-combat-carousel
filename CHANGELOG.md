@@ -1,3 +1,11 @@
+# Simple Combat Carousel 2.2.1
+
+Released / Veröffentlicht: 2026-11-28.
+
+- Compatibility metadata updated for Foundry VTT 14.371; compatibility reviewed against the Foundry 14.371 and D&D 5e 6.1.2 release notes. No runtime code, UI, assets or feature changes.
+- Kompatibilitätsangabe für Foundry VTT 14.371 aktualisiert; Versionshinweise von Foundry 14.371 und D&D 5e 6.1.2 geprüft. Keine Änderungen an Laufzeitcode, Oberfläche, Grafiken oder Funktionen.
+- Automated checks and static review; no new live Foundry test claimed. / Automatisierte Prüfungen und statischer Abgleich; kein neuer Foundry-Praxistest.
+
 # Simple Combat Carousel 2.2.0
 
 Released / Veröffentlicht: 2026-11-22.
