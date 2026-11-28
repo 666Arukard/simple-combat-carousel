@@ -46,7 +46,7 @@ jobs:
               assert module_id + '/lang/en.json' in z.namelist()
           PY
       - name: Publish immutable version and update latest
-        if: (github.event_name == 'workflow_dispatch' && inputs.publish == true) || (github.event_name == 'push' && github.event.head_commit.message == 'Publish Simple Combat Carousel 2.2.1')
+        if: github.event_name == 'workflow_dispatch' && inputs.publish == true
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -60,7 +60,7 @@ jobs:
           fi
           gh release create "$tag" --target "$GITHUB_SHA" --title "Simple Combat Carousel $version" --notes-file CHANGELOG.md --latest "dist/module.json" "dist/simple-combat-carousel-$version.zip"
       - name: Register released version with Foundry
-        if: (github.event_name == 'workflow_dispatch' && inputs.publish == true) || (github.event_name == 'push' && github.event.head_commit.message == 'Publish Simple Combat Carousel 2.2.1')
+        if: github.event_name == 'workflow_dispatch' && inputs.publish == true
         env:
           FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}
         run: python3 tools/publish-foundry.py
